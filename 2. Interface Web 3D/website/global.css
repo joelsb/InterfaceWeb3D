@@ -1,11 +1,11 @@
-html {
-    overflow: hidden;
-}
+
 body {
+  /* TODO: Change margin of body */
     margin: 0;
-  line-height: normal;
+    line-height: normal;
     overflow-y: auto; /* Or overflow-y: scroll if needed */
 }
+
 
 :root {
   /* fonts */
