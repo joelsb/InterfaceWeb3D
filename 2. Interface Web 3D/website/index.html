@@ -1,927 +1,737 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
+
 </head>
+
 <!-- TODO: change names of icons and images in public and html and classes associated -->
 <!-- TODO: check the two scroll bars when scroling :( -->
-<!-- TDO: Make the hover animations -->
+<!-- TODO: Make the hover animations -->
 
 <body>
     <div class="container">
-        <!-- TODO: change names of classes -->
-        <section class="banner-wrapper">
-            <header class="banner">
-                <div class="container1">
-                    <div class="margin">
-                        <div class="container2">
-                            <div class="link">
-                                <img class="component-3-icon" loading="lazy" alt="" src="./public/component-3.svg" />
-                            </div>
-                        </div>
+        <!-- DONE RESPONSIVE, CLASSES CHECKED -->
+        <header class="banner">
+            <a class="banner-logo" href="index.html">
+                <img loading="lazy" alt="La Redoute Logo" src="./public/banner/LaRedouteImage.svg" />
+            </a>
+            <div class="banner-content">
+                <nav class="banner-nav">
+                    <ul class="upper-menu">
+                        <li class="upper-item">
+                            <a class="menu-link1" href="">Casa</a>
+                            <span class="horizontal-divider" id="casa"></span>
+                        </li>
+                        <li class="upper-item">
+                            <a class="menu-link1" href="">Moda</a>
+                            <span class="horizontal-divider" id="moda"></span>
+                        </li>
+                    </ul>
+                    <div class="search-bar">
+                        <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+                        <input class="input-search-bar" placeholder="O que procura?" type="text" />
                     </div>
-                    <div class="container3">
-                        <div class="margin-parent">
-                            <div class="margin1">
-                                <div class="container5">
-                                    <div class="list">
-                                        <div class="list">
-                                            <div class="component-13">
-                                                <a class="left-column-title">Casa</a>
-                                                <div class="horizontal-divider"></div>
-                                            </div>
-                                        </div>
-                                        <div class="item1">
-                                            <div class="component-1">
-                                                <a class="right-column-title">Moda</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="margin2">
-                                    <div class="container6">
-                                        <div class="search">
-                                            <div class="component-14">
-                                                <input class="container7" placeholder="O que procura?" type="text" />
-
-                                                <div class="container8">
-                                                    <div class="container9"></div>
-                                                </div>
-                                            </div>
-                                            <img class="component-20-icon" alt="" src="./public/component-20.svg" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="margin3">
-                                <div class="container10">
-                                    <div class="container11">
-                                        <div class="component-15">
-                                            <img class="container-icon" loading="lazy" alt=""
-                                                src="./public/container.svg" />
-
-                                            <div class="container12">
-                                                <div class="container13">
-                                                    <a class="text">Entrar / Registar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container11" id="favorite">
-                                        <div class="component-16">
-                                            <img class="container-icon1" alt="" src="./public/container-1.svg" />
-                                        </div>
-                                    </div>
-                                    <div class="container11">
-                                        <div class="component-16">
-                                            <img class="container-icon1" alt="" src="./public/container-2.svg" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="margin4">
-                            <div class="container16">
-                                <div class="navigation-menu-principal">
-                                    <div class="container17">
-                                        <button class="component-17">
-                                            <div class="container18">
-                                                <img class="component-3-icon1" alt=""
-                                                    src="./public/component-3-1.svg" />
-                                            </div>
-                                            <div class="comboboxmargin">
-                                                <div class="container19">
-                                                    <b class="text1">Menu</b>
-                                                </div>
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <nav class="list1">
-                                        <div class="figure">
-                                            <div class="component-18">
-                                                <a class="text2">Natal</a>
-                                            </div>
-                                        </div>
-                                        <div class="figure">
-                                            <div class="component-18">
-                                                <div class="text3">Outlet</div>
-                                            </div>
-                                        </div>
-                                        <div class="figure">
-                                            <div class="component-18">
-                                                <div class="text3">Top Vendas</div>
-                                            </div>
-                                        </div>
-                                        <div class="figure">
-                                            <div class="component-18">
-                                                <a class="text2">Marcas</a>
-                                            </div>
-                                        </div>
-                                        <div class="itemmargin">
-                                            <div class="figure">
-                                                <div class="component-18">
-                                                    <div class="text3">Profissionais</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="margin8">
-                            <div class="container6">
-                                <div class="search">
-                                    <div class="component-14">
-                                        <input class="container7" placeholder="O que procura?" type="text" />
-
-                                        <div class="container8">
-                                            <div class="container9"></div>
-                                        </div>
-                                    </div>
-                                    <img class="component-20-icon" alt="" src="./public/component-20.svg" />
-                                </div>
-                            </div>
-                        </div>
+                    <div class="banner-actions">
+                        <a class="action-link">
+                            <img class="action-icon" loading="lazy" alt="User Icon" src="./public/banner/person.svg" />
+                            <span id="entrar-registar">Entrar / Registar</span>
+                        </a>
+                        <a class="action-link" id="favorite">
+                            <img class="action-icon" alt="Favorites Icon" src="./public/banner/heart.svg" />
+                        </a>
+                        <a class="action-link">
+                            <img class="action-icon" alt="Shopping Bag Icon" src="./public/banner/shoppingBag.svg" />
+                        </a>
                     </div>
-
+                </nav>
+                <div class="lower-nav-wrapper">
+                    <nav class="lower-menu">
+                        <ul class="lower-list">
+                            <button class="menu-button">
+                                <img class="menu-icon" alt="Menu Icon" src="./public/banner/menu.svg" />
+                                <b class="menu-button-text">Menu</b>
+                            </button>
+                            <li class="menu-link"><a href="#natal">Natal</a></li>
+                            <li class="menu-link"><a href="#outlet">Outlet</a></li>
+                            <li class="menu-link" id="top-vendas"><a href="#top-vendas">Top Vendas</a></li>
+                            <li class="menu-link"><a href="#marcas">Marcas</a></li>
+                            <div class="list-margin">
+                                <li><a class="menu-link" href="#profissionais">Profissionais</a></li>
+                            </div>
+                        </ul>
+                    </nav>
                 </div>
-            </header>
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <div class="product-wrapper">
+                <div class="nav-wrapper-mobile">
+                    <div class="search-bar">
+                        <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+                        <input class="input-search-bar" placeholder="O que procura?" type="text" />
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED -->
+        <section class="product-wrapper">
             <div class="product-parent">
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <div class="picture-source">
-                            <img class="picture-source" loading="lazy" alt="" src="./public/picture--source@2x.png" />
+                <article class="product-card" id="3D-Product">
+                    <div class="product-card-image">
+                        <img class="picture-source" src="./public/index/foto-modelo3D.png" alt="foto-modelo-3d" />
+                    </div>
+            <div class="description-wrapper">
+                <h3 class="product-card-description-title">Home Interieurs</h3>
+                <p class="description">Lampada de parede c/3D</p>
+                <div class="numbers">
+                    <div class="product-card-price-container">
+                        <span class="discount">-35%</span>
+                        <span class="price-without-discount">100.00 €</span>
+
+                    </div>
+                    <div class="price-final">65.00 €</div>
+                </div>
+            </div>
+            </article>
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product1.png"
+                        alt="Aplique em metal, ferro, keinta" />
+                </div>
+                <div class="description-wrapper">
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Aplique em metal, ferro, keinta</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-35%</span>
+                            <span class="price-without-discount">99.99 €</span>
+
+                        </div>
+                        <div class="price-final">64.99 €</div>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product2.png"
+                        alt="Aplique com abajur em linho grosso, jakomé" />
+
+                </div>
+                <div class="description-wrapper">
+                    <h3 class="product-card-description-title">am.pm</h3>
+                    <p class="description">Aplique com abajur em linho grosso, jakomé</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-20%</span>
+                            <span class="price-without-discount">149.99 €</span>
+
+                        </div>
+                        <div class="price-final">119.20 €</div>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product3.png"
+                        alt="Aplique ajustável, em metal, Jameson" />
+                </div>
+                <div class="description-wrapper">
+                    <h3 class="product-card-description-title">am.pm</h3>
+                    <p class="description">Aplique ajustável, em metal, Jameson</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-20%</span>
+                            <span class="price-without-discount">68.99 €</span>
+
+                        </div>
+                        <div class="price-final">55.19 €</div>
+                    </div>
+                </div>
+            </article>
+    </div>
+    </div>
+    <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED -->
+    <section class="grid">
+        <div class="grid-helper">
+            <div class="subtitle">
+                <h1 class="subtitle-text">Inspire-se</h1>
+            </div>
+            <img class="image-icon" loading="lazy" alt="" src="./public/index/inspire-se.png" />
+        </div>
+    </section>
+    <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED -->
+    <section class="product-wrapper">
+        <div class="product-parent">
+            <!-- Each product card becomes an article -->
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product4.png"
+                        alt="Abajur de teto, em verga, Ø50 cm, Makita" />
+                </div>
+                <div class="description-wrapper">
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Abajur de teto, em verga, Ø50 cm, Makita</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-35%</span>
+                            <span class="price-without-discount">160.00 €</span>
+
+                        </div>
+                        <div class="price-final">104.00 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product5.png"
+                        alt="Abajur de teto em vidro de cor, Ø30.5cm, Kinoko" />
+
+                </div>
+                <div class="description-wrapper">
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Abajur de teto em vidro de cor, Ø30.5cm, Kinoko</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-27%</span>
+                            <span class="price-without-discount">140.00 €</span>
+
+                        </div>
+                        <div class="price-final">102.20 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product6.png"
+                        alt="Candeeiro de teto em vidro fumado e metal, Bullesco" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">AM.pm</h3>
+                    <p class="description">Candeeiro de teto em vidro fumado e metal, Bullesco</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-20%</span>
+                            <span class="price-without-discount">349.00 €</span>
+
+                        </div>
+                        <div class="price-final">279.20 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product7.png"
+                        alt="Abajur de teto em fibras de panamá, Ø30cm, Samaï" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Abajur de teto em fibras de panamá, Ø30cm, Samaï</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-35%</span>
+                            <span class="price-without-discount">240.00 €</span>
+
+                        </div>
+                        <div class="price-final">156.00 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product8.png"
+                        alt="Candeeiro de teto Canopée, design E. Gallina" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">Am.pm</h3>
+                    <p class="description">Candeeiro de teto Canopée, design E. Gallina</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-20%</span>
+                            <span class="price-without-discount">389.00 €</span>
+
+                        </div>
+                        <div class="price-final">311.20 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product9.png"
+                        alt="Candeeiro em bambu, Ø45cm, Ezia" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Candeeiro em bambu, Ø45cm, Ezia</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-30%</span>
+                            <span class="price-without-discount">99.99 €</span>
+
+                        </div>
+                        <div class="price-final">69.99 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product10.png" alt="Abajur em linho, Souko" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">Am.pm</h3>
+                    <p class="description">Abajur em linho, Souko</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-20%</span>
+                            <span class="price-without-discount">169.00 €</span>
+
+                        </div>
+                        <div class="price-final">135.20 €</div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-card-image">
+
+                    <img class="picture-source" src="./public/index/product11.png"
+                        alt="Candeeiro de teto com recortes, em metal ferro, Festonia" />
+                </div>
+                <div class="description-wrapper">
+
+                    <h3 class="product-card-description-title">La redoute interieurs</h3>
+                    <p class="description">Candeeiro de teto com recortes, em metal ferro, Festonia</p>
+                    <div class="numbers">
+                        <div class="product-card-price-container">
+                            <span class="discount">-35%</span>
+                            <span class="price-without-discount">89.99 €</span>
+
+                        </div>
+                        <div class="price-final">58.49 €</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED  -->
+    <section class="grid">
+        <div class="grid-helper">
+            <div class="subtitle">
+                <h1 class="subtitle-text">
+                    As ideias inspiradoras das nossas marcas
+                </h1>
+            </div>
+            <div class="ideas-container">
+                <div class="ideas-card">
+                    <img class="image-icon1" alt="" src="./public/index/LaRedouteInterieurs.png" />
+                </div>
+                <div class="ideas-card">
+                    <img class="image-icon1" alt="" src="./public/index/AMPM.png" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED -->
+     
+    <section class="grid">
+        <article class="more-articles">
+            <header class="subtitle">
+                <h1 class="subtitle-text">Quer ver mais artigos?</h1>
+            </header>
+            <section class="more-articles-container">
+                <article class="articles">
+                    <figure class="figure">
+                        <div class="picture">
+                            <img class="image-articles" loading="lazy" alt="Têxtil-lar" src="./public/index/maisArtigosTextilLar.png" />
+                        </div>
+                    </figure>
+                    <section class="articles-text">
+                        <header class="articles-text-description">
+                            <h3 class="text-articles">Têxtil-lar</h3>
+                        </header>
+                        <figure class="image">
+                            <div class="image-fill">
+                                <img class="icon-arrow" alt="Arrow icon" src="./public/index/blackArrowWithWhiteBackground.svg" />
+                            </div>
+                        </figure>
+                    </section>
+                </article>
+    
+                <article class="articles">
+                    <figure class="figure">
+                        <div class="picture">
+                            <img class="image-articles" loading="lazy" alt="Sofás e cadeirões" src="./public/index/maisArtigosSofasECadeiroes.png" />
+                        </div>
+                    </figure>
+                    <section class="articles-text">
+                        <header class="articles-text-description">
+                            <h3 class="text-articles">Sofás e cadeirões</h3>
+                        </header>
+                        <figure class="image">
+                            <div class="image-fill">
+                                <img class="icon-arrow" alt="Arrow icon" src="./public/index/blackArrowWithWhiteBackground.svg" />
+                            </div>
+                        </figure>
+                    </section>
+                </article>
+    
+                <article class="articles">
+                    <figure class="figure">
+                        <div class="picture">
+                            <img class="image-articles" loading="lazy" alt="Mesas e cadeiras" src="./public/index/maisArtigosMesasECadeiras.png" />
+                        </div>
+                    </figure>
+                    <section class="articles-text">
+                        <header class="articles-text-description">
+                            <h3 class="text-articles">Mesas e cadeiras</h3>
+                        </header>
+                        <figure class="image">
+                            <div class="image-fill">
+                                <img class="icon-arrow" alt="Arrow icon" src="./public/index/blackArrowWithWhiteBackground.svg" />
+                            </div>
+                        </figure>
+                    </section>
+                </article>
+            </section>
+        </article>
+    </section>
+    <!-- DONE RESPONSIVE & NAMES OF CLASSES CHANGED-->
+    <section class="categories-wrapper">
+        <div class="categories">
+            <div class="subtitle">
+                <h1 class="subtitle-text">Todas as categorias</h1>
+            </div>
+            <div class="categories-container">
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Têxtil-Lar</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
                         </div>
                     </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">HOME interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">Lampada de parede c/3D</div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">100.00 €</div>
-                            <div class="discount">-35%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">65.00 €</div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" loading="lazy" alt="" src="./public/picture--source@2x.png" />
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Mobiliário</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">
-                                La redoute interieurs
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
                             </div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Aplique em metal, ferro, keinta
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">99.99 €</div>
-                            <div class="discount">-35%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">64.99 €</div>
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-1@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">am.pm</div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Decoração</div>
                         </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Aplique com abajur em linho grosso, jakomé
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
                             </div>
                         </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">149.00 €</div>
-                            <div class="discount">-20%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">119.20 €</div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-2@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">AM.PM</div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Artigos para Cama</div>
                         </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Aplique ajustável, em metal, Jameson
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
                             </div>
                         </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">68.99 €</div>
-                            <div class="discount">-20%</div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="price-final-container">
-                            <div class="price-final">55.19 €</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Puericultura</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Homem</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Criança</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-text">
+                        <div class="figure">
+                            <div class="category-names">Lingerie</div>
+                        </div>
+                        <div class="figure">
+                            <div class="component-8">
+                                <img class="component-3-icon5" alt=""
+                                    src="./public/index/whiteArrowWithBlackBackground.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-see-more">
+                        <div class="category-see-more-text">
+                            <div class="figure">
+                                <div class="text11">Ver mais</div>
+                            </div>
+                            <div class="image3">
+                                <div class="image-fill3">
+                                    <img class="component-3-icon6" alt=""
+                                        src="./public/index/downPointingArrowBlack.svg" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- DONE RESPONSIVE -->
-        <section class="grid">
-            <div class="grid-helper">
-                <div class="subtitle">
-                    <h1 class="subtitle-text">Inspire-se</h1>
-                </div>
-                <img class="image-icon" loading="lazy" alt="" src="./public/image@2x.png" />
+    </section>
+    <!-- DONE RESPONSIVE, CLASSES & STRUCTURE CHECKED -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-section-title">LA REDOUTE</h3>
+                <ul class="footer-link-list">
+                    <li><a href="#" class="footer-link">Quem somos</a></li>
+                    <li><a href="#" class="footer-link">Contactos</a></li>
+                    <li>
+                        <a href="#" class="footer-link">Sustentabilidade e responsabilidade social</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <section class="product-wrapper">
-            <div class="product-parent">
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-3@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">La redoute interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Abajur de teto, em verga, Ø50 cm, Makita
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">160.00 €</div>
-                            <div class="discount">-35%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">104.00 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-4@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">La redoute interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Abajur de teto em vidro de cor, Ø30.5cm, Kinoko
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">140.00 €</div>
-                            <div class="discount">-27%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="a-partir-de-container">
-                                <span class="a-partir-de-container1">
-                                    <span>a partir de</span>
-                                    <span class="price-final"> 102.20 €</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-5@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">AM.pm</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Candeeiro de teto em vidro fumado e metal, Bullesco
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">349.00 €</div>
-                            <div class="discount">-20%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">279.20 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-6@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">La redoute interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Abajur de teto em fibras de panamá, Ø30cm, Samaï
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">240.00 €</div>
-                            <div class="discount">-35%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">156.00 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-7@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">Am.pm</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Candeeiro de teto Canopée, design E. Gallina
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">389.00 €</div>
-                            <div class="discount">-20%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">311.20 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-8@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">La redoute interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Candeeiro em bambu, Ø45cm, Ezia
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">99.99 €</div>
-                            <div class="discount">-30%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">69.99 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-9@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">Am.pm</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">Abajur em linho, Souko</div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">169.00 €</div>
-                            <div class="discount">-20%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">135.20 €</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <img class="picture-source" alt="" src="./public/picture--source-10@2x.png" />
-                    </div>
-                    <div class="product-card-description">
-                        <div class="product-card-description-title">
-                            <div class="title-product">La redoute interieurs</div>
-                        </div>
-                        <div class="product-card-description-text">
-                            <div class="description">
-                                Candeeiro de teto com recortes, em metal ferro, Festonia
-                            </div>
-                        </div>
-                        <div class="product-card-price-container">
-                            <div class="price-without-discount">89.99 €</div>
-                            <div class="discount">-35%</div>
-                        </div>
-                        <div class="price-final-container">
-                            <div class="price-final">58.49 €</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-section">
+                <h3 class="footer-section-title">SERVIÇOS</h3>
+                <ul class="footer-link-list">
+                    <li><a href="#" class="footer-link">Ajuda</a></li>
+                    <li><a href="#" class="footer-link">Trocas & Devoluções</a></li>
+                    <li>
+                        <a href="#" class="footer-link">Remover inscrição de Newsletter</a>
+                    </li>
+                    <li><a href="#" class="footer-link">Recolha e montagem</a></li>
+                    <li><a href="#" class="footer-link">Todos os serviços</a></li>
+                </ul>
             </div>
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <section class="grid">
-            <div class="grid-helper">
-                <div class="subtitle">
-                    <h1 class="subtitle-text">As ideias inspiradoras das nossas marcas</h1>
-                </div>
-                <div class="ideas-container">
-                    <div class="ideas-card">
-                        <img class="image-icon1" alt="" src="./public/image-1@2x.png" />
+            <div class="footer-section">
+                <h3 class="footer-section-title">MARCAS EXCLUSIVAS</h3>
+                <ul class="footer-link-list">
+                    <li>
+                        <a href="#" class="footer-link">La Redoute Collections</a>
+                    </li>
+                    <li><a href="#" class="footer-link">La Redoute Intérieurs</a></li>
+                    <li><a href="#" class="footer-link">AM.PM.</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-section-title">UNIVERSO LA REDOUTE</h3>
+                <ul class="footer-link-list">
+                    <li><a href="#" class="footer-link">Inspiração</a></li>
+                    <li><a href="#" class="footer-link">Vídeos</a></li>
+                    <li><a href="#" class="footer-link">Profissionais</a></li>
+                    <li><a href="#" class="footer-link">APP La Redoute</a></li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="footer-bottom">
+            <div class="footer-divider-wrapper">
+                <div class="footer-divider"></div>
+            </div>
+            <div class="footer-bottom-text">
+                <ul class="footer-bottom-list">
+                    <li>
+                        <a href="#" class="footer-link">Condições gerais de venda</a>
+                    </li>
+                    <span>•</span>
+                    <li>
+                        <a href="#" class="footer-link">Condições das ofertas em vigor</a>
+                    </li>
+                    <span>•</span>
+                    <li>
+                        <a href="#" class="footer-link">Política de privacidade e cookies</a>
+                    </li>
+                    <span>•</span>
+                    <li>
+                        <a href="#" class="footer-link">Livro de reclamações eletrónico</a>
+                    </li>
+                    <span>•</span>
+                    <li>
+                        <a href="#" class="footer-link">Recrutamento La Redoute</a>
+                    </li>
+                </ul>
+                <div class="footer-dropdown">
+                    <div class="footer-dropdown-icon">
+                        <img src="./public/footer/globeNetwork.svg" alt="" />
                     </div>
-                    <div class="ideas-card">
-                        <img class="image-icon1" alt="" src="./public/image-2@2x.png" />
-
+                    <span class="footer-dropdown-item">Portugal</span>
+                    <div class="footer-dropdown-icon">
+                        <img src="./public/footer/downPointingArrowWhite.svg" alt="" />
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <section class="grid">
-            <div class="more-articles">
-                <div class="subtitle">
-                    <h1 class="subtitle-text">Quer ver mais artigos?</h1>
-                </div>
-                <div class="more-articles-container">
-                    <div class="articles">
-                        <div class="figure">
-                            <div class="picture">
-                                <img class="image-articles" loading="lazy" alt=""
-                                    src="./public/linge20de20maisonpng@2x.png" />
-                            </div>
-                        </div>
-                        <div class="articles-text">
-                            <div class="articles-text-description">
-                                <h3 class="text-articles">Têxtil-lar</h3>
-                            </div>
-                            <div class="image">
-                                <div class="image-fill">
-                                    <img class="icon-arrow" alt="" src="./public/component-3-2.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="articles">
-                        <div class="figure">
-                            <div class="picture">
-                                <img class="image-articles" loading="lazy" alt=""
-                                    src="./public/canapc3a920fauteuilpng@2x.png" />
-                            </div>
-                        </div>
-                        <div class="articles-text">
-                            <div class="articles-text-description">
-                                <h3 class="text-articles">Sofás e cadeirões</h3>
-                            </div>
-                            <div class="image">
-                                <div class="image-fill">
-                                    <img class="icon-arrow" alt="" src="./public/component-3-3.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="articles">
-                        <div class="figure">
-                            <div class="picture">
-                                <img class="image-articles" loading="lazy" alt=""
-                                    src="./public/table20chaisepng@2x.png" />
-                            </div>
-                        </div>
-                        <div class="articles-text">
-                            <div class="articles-text-description">
-                                <h3 class="text-articles">Mesas e cadeiras</h3>
-                            </div>
-                            <div class="image">
-                                <div class="image-fill">
-                                    <img class="icon-arrow" alt="" src="./public/component-3-4.svg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <section class="categories-wrapper">
-            <div class="categories">
-                <div class="subtitle">
-                    <h1 class="subtitle-text">Todas as categorias</h1>
-                </div>
-                <div class="categories-container">
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Têxtil-Lar</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-5.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-6.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Mobiliário</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-7.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-8.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Decoração</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-9.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-8.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Artigos para Cama</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-9.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-12.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Puericultura</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-13.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-12.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Homem</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-13.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-12.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Criança</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-13.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-12.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-text">
-                            <div class="figure">
-                                <div class="category-names">Lingerie</div>
-                            </div>
-                            <div class="figure">
-                                <div class="component-8">
-                                    <img class="component-3-icon5" alt="" src="./public/component-3-13.svg" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="category-see-more">
-                            <div class="category-see-more-text">
-                                <div class="figure">
-                                    <div class="text11">Ver mais</div>
-                                </div>
-                                <div class="image3">
-                                    <div class="image-fill3">
-                                        <img class="component-3-icon6" alt="" src="./public/component-3-12.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-
-        </section>
-        <!-- DONE RESPONSIVE -->
-        <footer class="footer">
-            <div class="container116">
-                <div class="container117">
-                    <div class="container118">
-                        <div class="heading-3">
-                            <div class="la-redoute">LA REDOUTE</div>
-                        </div>
-                        <div class="list2">
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">Quem somos</div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">Contactos</div>
-                                </div>
-                            </div>
-                            <div class="item9">
-                                <div class="component-11">
-                                    <div class="link-footer">
-                                        Sustentabilidade e responsabilidade social
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container117">
-                    <div class="container118">
-                        <div class="heading-3">
-                            <div class="la-redoute">SERVIÇOS</div>
-                        </div>
-                        <div class="list2">
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">Ajuda</div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        Trocas & Devoluções
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        Remover inscrição de Newsletter
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        Recolha e montagem
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        Todos os serviços
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container117">
-                    <div class="container118">
-                        <div class="heading-3">
-                            <div class="la-redoute">MARCAS EXCLUSIVAS</div>
-                        </div>
-                        <div class="list2">
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        La Redoute Collections
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        La Redoute Intérieurs
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">AM.PM.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container117">
-                    <div class="container118">
-                        <div class="heading-3">
-                            <div class="la-redoute">UNIVERSO LA REDOUTE</div>
-                        </div>
-                        <div class="list2">
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">Inspiração</div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">Vídeos</div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        Profissionais
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="heading-3">
-                                <div class="component-10">
-                                    <div class="link-footer">
-                                        APP La Redoute
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-container">
-                <div class="container125">
-                    <div class="horizontal-divider1"></div>
-                    <div class="footer-links-wrapper">
-                        <div class="footer-links">
-                            <div class="component-1014">
-                                <div class="text40">
-                                    Condições gerais de venda
-                                </div>
-                            </div>
-                            <div class="item22">
-                                <div class="div32"> • </div>
-                                <div class="component-1015">
-                                    <div class="text40">*Condições das ofertas em vigor</div>
-                                </div>
-                            </div>
-                            <div class="item23">
-                                <div class="div32"> • </div>
-                                <div class="component-1015">
-                                    <div class="text40">Política de privacidade e cookies</div>
-                                </div>
-                            </div>
-                            <div class="item24">
-                                <div class="div32"> • </div>
-                                <div class="component-1015">
-                                    <div class="text42">Livro de reclamações eletrónico</div>
-                                </div>
-                            </div>
-                            <div class="item25">
-                                <div class="div32"> • </div>
-                                <div class="component-1015">
-                                    <div class="text43">Recrutamento La Redoute</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item1">
-                        <div class="figure">
-                            <div class="image-fill11">
-                                <img class="component-3-icon21" alt="" src="./public/component-3-21.svg" />
-                            </div>
-                        </div>
-                        <div class="comboboxmargin">
-                            <div class="combobox">
-                                <div class="portugal">Portugal</div>
-                                <div class="margin7">
-                                    <div class="item1">
-                                        <div class="image-fill12">
-                                            <img class="component-3-icon22" alt="" src="./public/component-3-22.svg" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
     </div>
 </body>
+
+<script async src="/node_modules/es-module-shims.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "three/addons/": "/node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+<script type="module" defer src="./main.js"></script>
 
 </html>

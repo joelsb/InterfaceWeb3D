@@ -25,12 +25,30 @@ const sizes = {
     width: 800,
     height: 600
 }
-//render in the id="meuCanvas" and set sizes
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('meuCanvas') });
-renderer.setClearColor(0xffffff); 
-renderer.setSize(sizes.width, sizes.height);
+
+
+
+// Select the anchor element with the ID "3D-Product"
+const productCard = document.getElementById("3D-Product");
+
+// Add a click event listener to the anchor element
+productCard.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    window.location.href = "./productPage.html"; // Redirect to the new page
+});
+productCard.addEventListener("mouseover", function (event) {
+    productCard.style.cursor = "pointer";
+});
+
+
 
 //Create a clock for the animation
+/*
+
+//render in the id="meuCanvas" and set sizes
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('meuCanvas') });
+renderer.setClearColor(0xffffff);
+renderer.setSize(sizes.width, sizes.height);
 
 //Create a mixer
 let mixer = new THREE.AnimationMixer(scene);
@@ -84,7 +102,7 @@ scene.add(LightHelper2)
 <button id="btn_play">Play</button>
 <button id="btn_pause">Pause</button>
 <button id="btn_stop">Stop</button> 
-*/
+
 
 //Is the animation playing?
 let isPlaying = false
@@ -134,3 +152,4 @@ function tick() {
     delta = delta % min_latence;
 }
 tick();
+*/
