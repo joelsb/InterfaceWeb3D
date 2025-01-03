@@ -1,998 +1,335 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-    
-        <link rel="stylesheet" href="./index.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
-    </head>
-  <body>
-    <section class="banner-wrapper">
-        <header class="banner">
-            <div class="container1">
-                <div class="margin">
-                    <div class="container2">
-                        <div class="link">
-                            <img class="component-3-icon" loading="lazy" alt=""
-                                src="./public/banner/LaRedouteImage.svg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="container3">
-                    <div class="margin-parent">
-                        <div class="margin1">
-                            <div class="container5">
-                                <div class="list">
-                                    <div class="list">
-                                        <div class="component-13">
-                                            <a class="left-column-title">Casa</a>
-                                            <div class="horizontal-divider"></div>
-                                        </div>
-                                    </div>
-                                    <div class="item1">
-                                        <div class="component-1">
-                                            <a class="right-column-title">Moda</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="margin2">
-                                <div class="container6">
-                                    <div class="search">
-                                        <div class="component-14">
-                                            <input class="container7" placeholder="O que procura?" type="text" />
 
-                                            <div class="container8">
-                                                <div class="container9"></div>
-                                            </div>
-                                        </div>
-                                        <img class="component-20-icon" alt="" src="./public/banner/search.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="margin3">
-                            <div class="container10">
-                                <div class="container11">
-                                    <div class="component-15">
-                                        <img class="container-icon" loading="lazy" alt=""
-                                            src="./public/banner/person.svg" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-                                        <div class="container12">
-                                            <div class="container13">
-                                                <a class="text">Entrar / Registar</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container11" id="favorite">
-                                    <div class="component-16">
-                                        <img class="container-icon1" alt="" src="./public/banner/heart.svg" />
-                                    </div>
-                                </div>
-                                <div class="container11">
-                                    <div class="component-16">
-                                        <img class="container-icon1" alt="" src="./public/banner/shoppingBag.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="margin4">
-                        <div class="container16">
-                            <div class="navigation-menu-principal">
-                                <div class="container17">
-                                    <button class="component-17">
-                                        <div class="container18">
-                                            <img class="component-3-icon1" alt="" src="./public/banner/menu.svg" />
-                                        </div>
-                                        <div class="comboboxmargin">
-                                            <div class="container19">
-                                                <b class="text1">Menu</b>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                                <nav class="list1">
-                                    <div class="figure">
-                                        <div class="component-18">
-                                            <a class="text2">Natal</a>
-                                        </div>
-                                    </div>
-                                    <div class="figure">
-                                        <div class="component-18">
-                                            <div class="text3">Outlet</div>
-                                        </div>
-                                    </div>
-                                    <div class="figure">
-                                        <div class="component-18">
-                                            <div class="text3">Top Vendas</div>
-                                        </div>
-                                    </div>
-                                    <div class="figure">
-                                        <div class="component-18">
-                                            <a class="text2">Marcas</a>
-                                        </div>
-                                    </div>
-                                    <div class="itemmargin">
-                                        <div class="figure">
-                                            <div class="component-18">
-                                                <div class="text3">Profissionais</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="margin8">
-                        <div class="container6">
-                            <div class="search">
-                                <div class="component-14">
-                                    <input class="container7" placeholder="O que procura?" type="text" />
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
+</head>
 
-                                    <div class="container8">
-                                        <div class="container9"></div>
-                                    </div>
-                                </div>
-                                <img class="component-20-icon" alt="" src="./public/banner/search.svg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
 
-            </div>
-        </header>
-    </section>
-    <div class="section-main">
-      <section class="horizontalborder">
-        <div class="tab-panel">
-          <div class="component-42">
-            <img
-              class="component-2-icon"
-              alt=""
-              src="./public/component-2@2x.png"
-            />
-          </div>
-          <div class="tabpanel-undefined">
-            <div class="b774d9feeedd0cc7052b66f7djpg1">
-              <div class="button" id="buttonContainer">
-                <a class="d">3D</a>
-              </div>
-              <div class="image-carousel">
-                <div class="carousel-controls">
-                  <div class="button1">
-                    <div class="image13">
-                      <div class="component-43">
-                        <img
-                          class="component-2-icon1"
-                          loading="lazy"
-                          alt=""
-                          src="./public/component-2-1.svg"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="button1">
-                    <div class="component-43">
-                      <img
-                        class="component-2-icon2"
-                        loading="lazy"
-                        alt=""
-                        src="./public/component-2-2.svg"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tablist-slides-wrapper">
-                <div class="tablist-slides">
-                  <div class="tab-slide-0">
-                    <div class="backgroundborder"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                  <div class="tab-slide-1">
-                    <div class="border"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tabpanel-undefined1">
-          <div class="picture3">
-            <nav class="component-10-parent">
-              <div class="component-1019" id="component10Container">
-                <div class="text44">La Redoute</div>
-              </div>
-              <div class="space-wrapper">
-                <div class="space">/ </div>
-              </div>
-              <div class="component-1020">
-                <div class="text44">Iluminação</div>
-              </div>
-            </nav>
-            <div class="product-details">
-              <div class="home-interieurs1">HOME INTERIEURS</div>
-              <h1 class="lampada-de-parede1">Lampada de parede c/3D</h1>
-              <div class="container127">
-                <div class="stars">
-                  <div class="component-45">
-                    <img class="component-2-icon3" loading="lazy" alt="" />
-                  </div>
-                </div>
-                <div class="rating-spacer">
-                  <span class="span1">4,9</span>
-                  <span> /5 </span>
-                </div>
-                <div class="avaliaes">14 avaliações</div>
-              </div>
-            </div>
-            <div class="product-info">
-              <div class="backgroundborder1">
-                <div class="container128">
-                  <div class="color-details">
-                    <input
-                      class="b774d9feeedd0cc7052b66f7djpg2"
-                      type="checkbox"
-                    />
+  .product-images {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
 
-                    <div class="color-swatch">
-                      <div class="natural">Natural</div>
-                    </div>
-                  </div>
-                  <input
-                    class="color-name"
-                    placeholder="COR ÚNICA"
-                    type="text"
-                  />
-                </div>
-              </div>
-              <div class="backgroundborder1">
-                <div class="container129">
-                  <div class="tamanho">Tamanho</div>
-                  <input
-                    class="size-value"
-                    placeholder="TAMANHO ÚNICO"
-                    type="text"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="price-container">
-              <div class="frame-group">
-                <div class="parent7">
-                  <div class="div36">160.00 €</div>
-                  <div class="original-price">-35%</div>
-                </div>
-                <div class="div37">104.00 €</div>
-              </div>
-            </div>
-            <div class="picture-inner">
-              <div class="backgroundborder-parent">
-                <div class="backgroundborder3">
-                  <div class="button-content">
-                    <img
-                      class="button-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/frame.svg"
-                    />
-                  </div>
-                  <div class="button-spacer">
-                    <div class="spacer">1</div>
-                    <div class="button-spacer-child"></div>
-                  </div>
-                  <div class="button-content">
-                    <img
-                      class="button-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/frame-1.svg"
-                    />
-                  </div>
-                </div>
-                <button class="quantity-input">
-                  <div class="component-5">
-                    <div class="quantity">JUNTAR AO CARRINHO</div>
-                  </div>
-                </button>
-                <div class="counter">
-                  <div class="component-46">
-                    <img
-                      class="component-2-icon4"
-                      loading="lazy"
-                      alt=""
-                      src="./public/component-2-4.svg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  .carousel {
+    position: relative;
+  }
+
+  .carousel-track-container {
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    height: 500;
+    width: 500px;
+    background-color: black;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    display: block;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .carousel-control.prev {
+    left: 10px;
+  }
+
+  .carousel-control.next {
+    right: 10px;
+  }
+
+  .carousel-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .carousel-indicator {
+    background-color: gray;
+    border: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .carousel-indicator.current {
+    background-color: black;
+  }
+  
+</style>
+
+<body>
+  <header class="banner">
+    <a class="banner-logo" href="index.html">
+      <img loading="lazy" alt="La Redoute Logo" src="./public/banner/LaRedouteImage.svg" />
+    </a>
+    <div class="banner-content">
+      <nav class="banner-nav">
+        <ul class="upper-menu">
+          <li class="upper-item">
+            <a class="menu-link1" href="">Casa</a>
+            <span class="horizontal-divider" id="casa"></span>
+          </li>
+          <li class="upper-item">
+            <a class="menu-link1" href="">Moda</a>
+            <span class="horizontal-divider" id="moda"></span>
+          </li>
+        </ul>
+        <div class="search-bar">
+          <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+          <input class="input-search-bar" placeholder="O que procura?" type="text" />
         </div>
-      </section>
-      <section class="background1">
-        <h1 class="artigos-semelhantes">Artigos semelhantes</h1>
-        <div class="container130">
-          <div class="container131">
-            <div class="component-12">
-              <div class="container132">
-                <div class="container133">
-                  <div class="picture-source12">
-                    <img
-                      class="f831e8eb4f6315a4ad1f465a5eea77-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/f831e8eb4f6315a4ad1f465a5eea77e7jpg@2x.png"
-                    />
-                  </div>
-                </div>
-                <div class="container134">
-                  <div class="container135">
-                    <div class="la-redoute-interieurs6">
-                      LA REDOUTE INTERIEURS
-                    </div>
-                  </div>
-                  <div class="container136">
-                    <div class="del-11000-container">
-                      Aplique em metal, ferro, keinta
-                    </div>
-                  </div>
-                  <div class="container132">
-                    <div class="del-11000-container">
-                      <span> <span class="span2">99.99 €</span> - 35% </span>
-                    </div>
-                  </div>
-                  <div class="div38">64.99 €</div>
-                </div>
-              </div>
-            </div>
-            <div class="component-19">
-              <div class="container132">
-                <div class="container133">
-                  <div class="picture-source12">
-                    <img
-                      class="f831e8eb4f6315a4ad1f465a5eea77-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/c6257bdef8929697bd33bda9526e359ejpg@2x.png"
-                    />
-                  </div>
-                </div>
-                <div class="container134">
-                  <div class="container135">
-                    <div class="la-redoute-interieurs6">AM.PM</div>
-                  </div>
-                  <div class="container136">
-                    <div class="del-11000-container">
-                      Aplique com abajur em linho grosso, jakomé
-                    </div>
-                  </div>
-                  <div class="container132">
-                    <div class="del-11000-container">
-                      <span> <span class="span2">149.00 €</span> -20% </span>
-                    </div>
-                  </div>
-                  <div class="div38">119.20 €</div>
-                </div>
-              </div>
-            </div>
-            <div class="component-12">
-              <div class="container132">
-                <div class="container133">
-                  <div class="picture-source12">
-                    <img
-                      class="f831e8eb4f6315a4ad1f465a5eea77-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/9056be92e972e4f3669762599f9a22b4jpg@2x.png"
-                    />
-                  </div>
-                </div>
-                <div class="container134">
-                  <div class="container135">
-                    <div class="la-redoute-interieurs6">
-                      LA REDOUTE INTERIEURS
-                    </div>
-                  </div>
-                  <div class="container136">
-                    <div class="del-11000-container">
-                      Suspensão redonda em bambu, Cor…
-                    </div>
-                  </div>
-                  <div class="container132">
-                    <div class="del-11000-container">
-                      <span class="span2">115.00 €</span>-19%
-                    </div>
-                  </div>
-                  <div class="div38">93.15 €</div>
-                </div>
-              </div>
-            </div>
-            <div class="component-12">
-              <div class="container132">
-                <div class="container133">
-                  <div class="picture-source12">
-                    <img
-                      class="f831e8eb4f6315a4ad1f465a5eea77-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/b631d1401bb1d70792f3ec567ff8728ejpg@2x.png"
-                    />
-                  </div>
-                </div>
-                <div class="container134">
-                  <div class="container135">
-                    <div class="la-redoute-interieurs6">
-                      LA REDOUTE INTERIEURS
-                    </div>
-                  </div>
-                  <div class="container136">
-                    <div class="del-11000-container">
-                      Abajur em bambu, Ø33 cm, Ezia
-                    </div>
-                  </div>
-                  <div class="container132">
-                    <div class="del-11000-container">
-                      <span class="span2">49.99 €</span>-35%
-                    </div>
-                  </div>
-                  <div class="div38">32.49 €</div>
-                </div>
-              </div>
-            </div>
-            <div class="component-12">
-              <div class="container132">
-                <div class="container133">
-                  <div class="picture-source12">
-                    <img
-                      class="f831e8eb4f6315a4ad1f465a5eea77-icon"
-                      loading="lazy"
-                      alt=""
-                      src="./public/b678905ab111f0d099ee6e67daa261cdjpg@2x.png"
-                    />
-                  </div>
-                </div>
-                <div class="container134">
-                  <div class="container135">
-                    <div class="la-redoute-interieurs6">
-                      LA REDOUTE INTERIEURS
-                    </div>
-                  </div>
-                  <div class="container136">
-                    <div class="del-11000-container">
-                      Abajur de teto em rotim Ø60 cm, Da…
-                    </div>
-                  </div>
-                  <div class="container132">
-                    <div class="del-11000-container">
-                      <span class="span2">150.00 €</span>-30%
-                    </div>
-                  </div>
-                  <div class="div38">105.00 €</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="banner-actions">
+          <a class="action-link">
+            <img class="action-icon" loading="lazy" alt="User Icon" src="./public/banner/person.svg" />
+            <span id="entrar-registar">Entrar / Registar</span>
+          </a>
+          <a class="action-link" id="favorite">
+            <img class="action-icon" alt="Favorites Icon" src="./public/banner/heart.svg" />
+          </a>
+          <a class="action-link">
+            <img class="action-icon" alt="Shopping Bag Icon" src="./public/banner/shoppingBag.svg" />
+          </a>
         </div>
-      </section>
-      <section class="description">
-        <h1 class="artigos-semelhantes">Descrição do artigo</h1>
-        <div class="detailed-description">
-          <div class="container162">
-            <div class="container163">
-              <div class="abajur-de-teto-em-verga-50-parent">
-                <div class="abajur-de-teto4">
-                  Abajur de teto, em verga, Ø50 cm, Makita natural LA REDOUTE
-                  INTERIEURS
-                </div>
-                <div class="ref-2445420-container">
-                  <span class="ref-2445420-container1">
-                    <span>Ref </span>
-                    <span class="span1">2445420 / GIR469</span>
-                  </span>
-                </div>
-              </div>
-              <div class="confecionado-em-verga-entrana-parent">
-                <div class="rating-spacer">
-                  Confecionado em verga entrançada, o abajur de teto Makita
-                  difunde uma luz aconchegante.
-                </div>
-                <div class="descrio-em-verga-container">
-                  <p class="descrio">Descrição:</p>
-                  <p class="em-verga-entranada"> •  Em verga entrançada</p>
-                  <p class="em-verga-entranada">
-                     •  Estrutura em ferro revestido por uma tinta epóxi
-                  </p>
-                  <p class="em-verga-entranada">
-                     •  Suporte para casquilho E27
-                  </p>
-                  <p class="em-verga-entranada">
-                     •  Este artigo é vendido sem eletrificação, cabo elétrico
-                    Baulind à venda em laredoute.pt
-                  </p>
-                </div>
-              </div>
-              <div class="quality">
-                <div class="rating-spacer">
-                  <p class="descrio">Qualidade</p>
-                  <p class="em-verga-entranada"> •  Fabrico artesanal</p>
-                </div>
-              </div>
-              <div class="dimensions">
-                <div class="rating-spacer">
-                  <p class="descrio">Dimensões:</p>
-                  <p class="em-verga-entranada"> •  Diâmetro: 50 cm</p>
-                  <p class="em-verga-entranada"> •  Altura: 50 cm</p>
-                </div>
-                <div class="rating-spacer">
-                  <p class="descrio">Dimensões e peso da embalagem</p>
-                  <p class="em-verga-entranada">1 embalagem</p>
-                  <p class="em-verga-entranada">
-                     •  Comp. 52 x alt. 52 x prof. 52 cm
-                  </p>
-                  <p class="em-verga-entranada"> •  1,5 kg</p>
-                </div>
-              </div>
-              <div class="colors">
-                <div class="cores">Cores</div>
-                <div class="tamanho-nico">Natural</div>
-              </div>
-              <div class="colors">
-                <div class="tamanhos">Tamanhos</div>
-                <div class="tamanho-nico">TAMANHO ÚNICO</div>
-              </div>
+      </nav>
+      <div class="lower-nav-wrapper">
+        <nav class="lower-menu">
+          <ul class="lower-list">
+            <button class="menu-button">
+              <img class="menu-icon" alt="Menu Icon" src="./public/banner/menu.svg" />
+              <b class="menu-button-text">Menu</b>
+            </button>
+            <li class="menu-link"><a href="#natal">Natal</a></li>
+            <li class="menu-link"><a href="#outlet">Outlet</a></li>
+            <li class="menu-link" id="top-vendas"><a href="#top-vendas">Top Vendas</a></li>
+            <li class="menu-link"><a href="#marcas">Marcas</a></li>
+            <div class="list-margin">
+              <li><a class="menu-link" href="#profissionais">Profissionais</a></li>
             </div>
-          </div>
-          <div class="container164">
-            <div class="c614f626111c0c0db376ad7017b60"></div>
-          </div>
+          </ul>
+        </nav>
+      </div>
+      <div class="nav-wrapper-mobile">
+        <div class="search-bar">
+          <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+          <input class="input-search-bar" placeholder="O que procura?" type="text" />
         </div>
-      </section>
-      <section class="customer-reviews-title-wrapper">
-        <div class="customer-reviews-title">
-          <h1 class="avaliaes-dos-clientes">
-            Avaliações dos clientes sobre este artigo
-          </h1>
-          <div class="customer-reviews-content">
-            <div class="container165">
-              <div class="container166"></div>
-              <div class="container167">
-                <div class="b774d9feeedd0cc7052b66f7djpg3"></div>
-                <div class="average-value-parent">
-                  <b class="average-value">4,9</b>
-                  <div class="average-rating-breakdown">
-                    <div class="rating-distribution">
-                      <div class="container168">
-                        <div class="component-47">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-5.svg"
-                          />
-                        </div>
-                        <div class="component-48">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-6.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="total-rating-count">(14)</div>
-                  </div>
-                  <div class="container169">
-                    <div class="rating-spacer">
-                      <p class="em-verga-entranada">média de</p>
-                      <p class="em-verga-entranada">avaliações em</p>
-                      <p class="em-verga-entranada">todos os idiomas</p>
-                    </div>
-                  </div>
-                  <div class="button3">
-                    <div class="frame-group">
-                      <div class="image14">
-                        <div class="component-49">
-                          <img
-                            class="component-2-icon7"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-7.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container171">
-                      <div class="avaliaes-100-autnticas">
-                        Avaliações 100% autênticas,
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="review-list">
-            <div class="review">
-              <div class="review-content">
-                <div class="container172">
-                  <div class="container173">
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-8.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-9.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-10.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-11.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            alt=""
-                            src="./public/component-2-12.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="container179">
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-13.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-14.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-15.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-16.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container174">
-                      <div class="image14">
-                        <div class="component-410">
-                          <img
-                            class="component-2-icon3"
-                            loading="lazy"
-                            alt=""
-                            src="./public/component-2-17.svg"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="image-count">21/09/2024</div>
-            </div>
-            <div class="container185">
-              <div class="container186">
-                <div class="excelentes-luzes-pendentes">
-                  Excelentes luzes pendentes
-                </div>
-                <div class="review-body">
-                  <div class="estes-candeeiros-suspensos">
-                    Estes candeeiros suspensos são magníficos, bem feitos e com
-                    boa relação custo-benefício, com o desconto que recebi
-                  </div>
-                </div>
-                <div class="recommendation">
-                  <div class="component-420">
-                    <img
-                      class="component-2-icon18"
-                      loading="lazy"
-                      alt=""
-                      src="./public/component-2-18.svg"
-                    />
-                  </div>
-                  <div class="estes-candeeiros-suspensos">
-                    Eu recomendo este artigo
-                  </div>
-                </div>
-                <div class="reviewer-info">
-                  <div class="reviewer-name">
-                    <div class="martinel">MartineL</div>
-                  </div>
-                  <div class="component-421">
-                    <img
-                      class="component-2-icon19"
-                      loading="lazy"
-                      alt=""
-                      src="./public/component-2-19.svg"
-                    />
-                  </div>
-                  <div class="cliente-verificado">Cliente verificado</div>
-                </div>
-                <div class="comprado-h-1">Comprado há 1 mês</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
-    <footer class="footer">
-        <div class="container116">
-            <div class="container117">
-                <div class="container118">
-                    <div class="heading-3">
-                        <div class="la-redoute">LA REDOUTE</div>
-                    </div>
-                    <div class="list2">
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">Quem somos</div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">Contactos</div>
-                            </div>
-                        </div>
-                        <div class="item9">
-                            <div class="component-11">
-                                <div class="link-footer">
-                                    Sustentabilidade e responsabilidade social
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container117">
-                <div class="container118">
-                    <div class="heading-3">
-                        <div class="la-redoute">SERVIÇOS</div>
-                    </div>
-                    <div class="list2">
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">Ajuda</div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    Trocas & Devoluções
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    Remover inscrição de Newsletter
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    Recolha e montagem
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    Todos os serviços
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container117">
-                <div class="container118">
-                    <div class="heading-3">
-                        <div class="la-redoute">MARCAS EXCLUSIVAS</div>
-                    </div>
-                    <div class="list2">
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    La Redoute Collections
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    La Redoute Intérieurs
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">AM.PM.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  </header>
+  <section class="main">
+    <section class="product-to-kart">
+      <div class="product-images">
+        <div class="carousel">
+          <button class="carousel-control prev">&larr;</button>
+          <div class="carousel-track-container">
+            <ul class="carousel-track">
+              <li class="carousel-slide current">
+                <img src="./public/foto_modelo3D-2.png" alt="Image 1" />
+              </li>
+              <li class="carousel-slide">
+                <img src="./public/foto_modelo3D-3.png" alt="Image 2" />
+              </li>
+              <li class="carousel-slide">
+                <img src="./public/foto_modelo3D-4.png" alt="Image 3" />
+              </li>
+              <li class="carousel-slide">
+                <img src="./public/foto_modelo3D-5.png" alt="Image 4" />
+              </li>
+            </ul>
+          </div>
+          <button class="carousel-control next">&rarr;</button>
+        </div>
+        <div class="carousel-nav">
+          <button class="carousel-indicator current"></button>
+          <button class="carousel-indicator"></button>
+          <button class="carousel-indicator"></button>
+          <button class="carousel-indicator"></button>
+        </div>
+      </div>
+    </section>
 
-            <div class="container117">
-                <div class="container118">
-                    <div class="heading-3">
-                        <div class="la-redoute">UNIVERSO LA REDOUTE</div>
-                    </div>
-                    <div class="list2">
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">Inspiração</div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">Vídeos</div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    Profissionais
-                                </div>
-                            </div>
-                        </div>
-                        <div class="heading-3">
-                            <div class="component-10">
-                                <div class="link-footer">
-                                    APP La Redoute
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <section class="similar-products">
+      <div class="similar-products-title">
+        <h2>Produtos Similares</h2>
+        <article class="product-card2">
+          <img src="" alt="">
+        </article>
+        <article class="product-card2">
+
+        </article>
+        <article class="product-card2">
+
+        </article>
+        <article class="product-card2">
+
+        </article>
+        <article class="product-card2">
+
+        </article>
+      </div>
+    </section>
+    <section class="product-description">
+
+    </section>
+    <section class="product-reviews">
+
+    </section>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3 class="footer-section-title">LA REDOUTE</h3>
+        <ul class="footer-link-list">
+          <li><a href="#" class="footer-link">Quem somos</a></li>
+          <li><a href="#" class="footer-link">Contactos</a></li>
+          <li>
+            <a href="#" class="footer-link">Sustentabilidade e responsabilidade social</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-section-title">SERVIÇOS</h3>
+        <ul class="footer-link-list">
+          <li><a href="#" class="footer-link">Ajuda</a></li>
+          <li><a href="#" class="footer-link">Trocas & Devoluções</a></li>
+          <li>
+            <a href="#" class="footer-link">Remover inscrição de Newsletter</a>
+          </li>
+          <li><a href="#" class="footer-link">Recolha e montagem</a></li>
+          <li><a href="#" class="footer-link">Todos os serviços</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-section-title">MARCAS EXCLUSIVAS</h3>
+        <ul class="footer-link-list">
+          <li>
+            <a href="#" class="footer-link">La Redoute Collections</a>
+          </li>
+          <li><a href="#" class="footer-link">La Redoute Intérieurs</a></li>
+          <li><a href="#" class="footer-link">AM.PM.</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-section-title">UNIVERSO LA REDOUTE</h3>
+        <ul class="footer-link-list">
+          <li><a href="#" class="footer-link">Inspiração</a></li>
+          <li><a href="#" class="footer-link">Vídeos</a></li>
+          <li><a href="#" class="footer-link">Profissionais</a></li>
+          <li><a href="#" class="footer-link">APP La Redoute</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-divider-wrapper">
+        <div class="footer-divider"></div>
+      </div>
+      <div class="footer-bottom-text">
+        <ul class="footer-bottom-list">
+          <li>
+            <a href="#" class="footer-link">Condições gerais de venda</a>
+          </li>
+          <span>•</span>
+          <li>
+            <a href="#" class="footer-link">Condições das ofertas em vigor</a>
+          </li>
+          <span>•</span>
+          <li>
+            <a href="#" class="footer-link">Política de privacidade e cookies</a>
+          </li>
+          <span>•</span>
+          <li>
+            <a href="#" class="footer-link">Livro de reclamações eletrónico</a>
+          </li>
+          <span>•</span>
+          <li>
+            <a href="#" class="footer-link">Recrutamento La Redoute</a>
+          </li>
+        </ul>
+        <div class="footer-dropdown">
+          <div class="footer-dropdown-icon">
+            <img src="./public/footer/globeNetwork.svg" alt="" />
+          </div>
+          <span class="footer-dropdown-item">Portugal</span>
+          <div class="footer-dropdown-icon">
+            <img src="./public/footer/downPointingArrowWhite.svg" alt="" />
+          </div>
         </div>
-        <div class="container-container">
-            <div class="container125">
-                <div class="horizontal-divider1"></div>
-                <div class="footer-links-wrapper">
-                    <div class="footer-links">
-                        <div class="component-1014">
-                            <div class="text40">
-                                Condições gerais de venda
-                            </div>
-                        </div>
-                        <div class="item22">
-                            <div class="div32"> • </div>
-                            <div class="component-1015">
-                                <div class="text40">*Condições das ofertas em vigor</div>
-                            </div>
-                        </div>
-                        <div class="item23">
-                            <div class="div32"> • </div>
-                            <div class="component-1015">
-                                <div class="text40">Política de privacidade e cookies</div>
-                            </div>
-                        </div>
-                        <div class="item24">
-                            <div class="div32"> • </div>
-                            <div class="component-1015">
-                                <div class="text42">Livro de reclamações eletrónico</div>
-                            </div>
-                        </div>
-                        <div class="item25">
-                            <div class="div32"> • </div>
-                            <div class="component-1015">
-                                <div class="text43">Recrutamento La Redoute</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item1">
-                    <div class="figure">
-                        <div class="image-fill11">
-                            <img class="component-3-icon21" alt="" src="./public/footer/globeNetwork.svg" />
-                        </div>
-                    </div>
-                    <div class="comboboxmargin">
-                        <div class="combobox">
-                            <div class="portugal">Portugal</div>
-                            <div class="margin7">
-                                <div class="item1">
-                                    <div class="image-fill12">
-                                        <img class="component-3-icon22" alt=""
-                                            src="./public/footer/downPointingArrowWhite.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-  </body>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector(".carousel-control.next");
+  const prevButton = document.querySelector(".carousel-control.prev");
+  const indicators = document.querySelectorAll(".carousel-indicator");
+
+  let currentIndex = 0;
+
+  const updateCarousel = (index) => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    indicators.forEach((dot, i) =>
+      dot.classList.toggle("current", i === index)
+    );
+  };
+
+  nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel(currentIndex);
+  });
+
+  prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel(currentIndex);
+  });
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      currentIndex = index;
+      updateCarousel(currentIndex);
+    });
+  });
+});
+</script>
+
 </html>
