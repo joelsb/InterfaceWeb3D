@@ -17,80 +17,219 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
+    padding-top: 70px;
   }
+  :root {
+  --carousel-width: 600px;
+  --carousel-height: 650px;
+  --indicator-active: rgb(0, 0, 0);
+  --indicator-inactive: rgb(255, 255, 255);
+}
 
-  .product-images {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
+.product-images {
+  position: relative;
+  width: 100%;
+  max-width: var(--carousel-width);
+  margin: 0 auto;
+  overflow: hidden;
+}
 
-  .carousel {
-    position: relative;
-  }
+.carousel {
+  position: relative;
+}
 
-  .carousel-track-container {
-    overflow: hidden;
-  }
+.carousel-track-container {
+  overflow: hidden;
+}
 
-  .carousel-track {
+.carousel-track {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: var(--carousel-height); /* Matches the defined height */
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ensures the image is centered */
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container while maintaining proportions */
+}
+
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 10%;
+  border: 1px solid;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.carousel-control svg {
+  width: 35px; /* Adjust as needed for your SVG size */
+  height: 35px;
+}
+
+.carousel-control svg path {
+  fill: black;
+  transition: color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+/* Hover effect */
+.carousel-control:hover svg path {
+  fill: white;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255);
+  color: var(--control-color);
+}
+
+
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 92%;
+  left: 5%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; /* Increased margin for better spacing */
+  gap: 10px; /* Even spacing between indicators */
+}
+
+.carousel-indicator {
+  background-color: var(--indicator-inactive);
+  border: 1px solid rgba(0, 0, 0, 1); /* Add a border for a cleaner look */
+  width: 15px; /* Slightly larger for better visibility */
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, border 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.carousel-indicator:hover,
+.carousel-indicator:focus {
+  background-color: var(--indicator-active);
+  transform: scale(1.2); /* Slightly enlarges on hover for interaction feedback */
+  border: 2px solid var(--indicator-active); /* Highlight border for active hover */
+}
+
+.carousel-indicator.current {
+  background-color: var(--indicator-active);
+  border: 2px solid var(--indicator-active); /* Solid border for active indicator */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* More pronounced shadow for active state */
+}
+
+
+
+  .product-to-kart {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
   }
 
-  .carousel-slide {
-    min-width: 100%;
-    height: 500;
-    width: 500px;
-    background-color: black;
+  .product-details {
+    flex: 1;
+    max-width: 500px;
   }
 
-  .carousel-slide img {
-    width: 100%;
-    display: block;
-  }
-
-  .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: white;
-    border: none;
+  .product-title {
     font-size: 1.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 
-  .carousel-control.prev {
-    left: 10px;
+  .product-rating {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
   }
 
-  .carousel-control.next {
-    right: 10px;
-  }
-
-  .carousel-nav {
+  .product-options {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
 
-  .carousel-indicator {
-    background-color: gray;
-    border: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
+  .product-options label {
+    font-size: 1rem;
+    margin-right: 10px;
   }
 
-  .carousel-indicator.current {
+  .product-options select {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .product-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .add-to-cart {
+    flex: 1;
+    padding: 10px;
     background-color: black;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
   }
-  
+
+  .add-to-cart:hover {
+    background-color: #333;
+  }
+
+  .wishlist-button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .wishlist-button:hover {
+    color: red;
+  }
 </style>
 
 <body>
@@ -154,63 +293,107 @@
   </header>
   <section class="main">
     <section class="product-to-kart">
+      <!-- Product Images (Your existing carousel code) -->
       <div class="product-images">
         <div class="carousel">
-          <button class="carousel-control prev">&larr;</button>
+          <button class="carousel-control prev" aria-label="Previous slide">
+            <svg width="30" height="30" viewBox="0 0 41 41" fill="" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M31.8838 21.0284H13.3073L19.0973 26.8184L19.804 27.5251L18.3905 28.9387L17.6838 28.232L10.1875 20.7357C9.79724 20.3453 9.79724 19.7125 10.1875 19.3221L17.6838 11.8259L18.3905 11.1191L19.804 12.5326L19.0973 13.2395L13.3073 19.0294H31.8838V21.0284Z"/>
+              </svg>
+              
+          </button>
           <div class="carousel-track-container">
             <ul class="carousel-track">
               <li class="carousel-slide current">
-                <img src="./public/foto_modelo3D-2.png" alt="Image 1" />
+                <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
               </li>
               <li class="carousel-slide">
-                <img src="./public/foto_modelo3D-3.png" alt="Image 2" />
+                <img src="./public/foto_modelo3D-3.png" alt="Product Image 2" />
               </li>
               <li class="carousel-slide">
-                <img src="./public/foto_modelo3D-4.png" alt="Image 3" />
+                <img src="./public/foto_modelo3D-4.png" alt="Product Image 3" />
               </li>
               <li class="carousel-slide">
-                <img src="./public/foto_modelo3D-5.png" alt="Image 4" />
+                <img src="./public/foto_modelo3D-5.png" alt="Product Image 4" />
               </li>
+              
             </ul>
           </div>
-          <button class="carousel-control next">&rarr;</button>
+          <div class="carousel-nav" role="tablist">
+            <button class="carousel-indicator current" role="tab" aria-label="Slide 1"></button>
+            <button class="carousel-indicator" role="tab" aria-label="Slide 2"></button>
+            <button class="carousel-indicator" role="tab" aria-label="Slide 3"></button>
+            <button class="carousel-indicator" role="tab" aria-label="Slide 4"></button>
+          </div>
+          <button class="carousel-control next" aria-label="Next slide">
+            <svg width="30" height="30" viewBox="0 0 41 41" fill="" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.38477 19.0298H27.9613L22.1713 13.2398L21.4645 12.5331L22.878 11.1195L23.5848 11.8263L31.081 19.3225C31.4713 19.7129 31.4713 20.3457 31.081 20.7361L23.5848 28.2323L22.878 28.9391L21.4645 27.5256L22.1713 26.8188L27.9613 21.0288H9.38477V19.0298Z" fill="#12151B"/>
+              </svg>
+          </button>
+          
         </div>
-        <div class="carousel-nav">
-          <button class="carousel-indicator current"></button>
-          <button class="carousel-indicator"></button>
-          <button class="carousel-indicator"></button>
-          <button class="carousel-indicator"></button>
+        
+      </div>
+      
+
+      <!-- Product Details Section -->
+      <div class="product-details">
+        <h1 class="product-title">Lâmpada de parede c/3D</h1>
+        <p class="product-rating">4.5★ | 78 avaliações</p>
+        <div class="product-options">
+          <div class="product-color">
+            <label for="color">Cor:</label>
+            <select id="color">
+              <option value="natural">Natural</option>
+              <option value="preto">Preto</option>
+            </select>
+          </div>
+          <div class="product-size">
+            <label for="size">Tamanho:</label>
+            <select id="size">
+              <option value="p">Pequeno</option>
+              <option value="m">Médio</option>
+              <option value="g">Grande</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-price">
+          <span>10,00 €</span>
+        </div>
+        <div class="product-actions">
+          <button class="add-to-cart">Adicionar ao carrinho</button>
+          <button class="wishlist-button">&#x2661;</button>
         </div>
       </div>
     </section>
+  </section>
 
+  <section class="similar-products">
+    <div class="similar-products-title">
+      <h2>Produtos Similares</h2>
+      <article class="product-card2">
+        <img src="" alt="">
+      </article>
+      <article class="product-card2">
 
-    <section class="similar-products">
-      <div class="similar-products-title">
-        <h2>Produtos Similares</h2>
-        <article class="product-card2">
-          <img src="" alt="">
-        </article>
-        <article class="product-card2">
+      </article>
+      <article class="product-card2">
 
-        </article>
-        <article class="product-card2">
+      </article>
+      <article class="product-card2">
 
-        </article>
-        <article class="product-card2">
+      </article>
+      <article class="product-card2">
 
-        </article>
-        <article class="product-card2">
+      </article>
+    </div>
+  </section>
+  <section class="product-description">
 
-        </article>
-      </div>
-    </section>
-    <section class="product-description">
+  </section>
+  <section class="product-reviews">
 
-    </section>
-    <section class="product-reviews">
-
-    </section>
+  </section>
   </section>
   <footer class="footer">
     <div class="footer-container">
@@ -297,31 +480,44 @@
   </footer>
 </body>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".carousel-track");
   const slides = Array.from(track.children);
   const nextButton = document.querySelector(".carousel-control.next");
   const prevButton = document.querySelector(".carousel-control.prev");
-  const indicators = document.querySelectorAll(".carousel-indicator");
+  const indicators = Array.from(document.querySelectorAll(".carousel-indicator"));
 
   let currentIndex = 0;
 
   const updateCarousel = (index) => {
+    // Update slide position
     track.style.transform = `translateX(-${index * 100}%)`;
-    indicators.forEach((dot, i) =>
-      dot.classList.toggle("current", i === index)
-    );
+
+    // Update active class on indicators
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle("current", i === index);
+      dot.setAttribute("aria-selected", i === index);
+    });
+
+    // Update current class on slides
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("current", i === index);
+    });
   };
 
-  nextButton.addEventListener("click", () => {
+  const moveToNextSlide = () => {
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel(currentIndex);
-  });
+  };
 
-  prevButton.addEventListener("click", () => {
+  const moveToPrevSlide = () => {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel(currentIndex);
-  });
+  };
+
+  // Event listeners
+  nextButton.addEventListener("click", moveToNextSlide);
+  prevButton.addEventListener("click", moveToPrevSlide);
 
   indicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {
@@ -330,6 +526,26 @@
     });
   });
 });
+
+
+  // Handle "Add to Cart" button click
+  document.querySelector('.add-to-cart').addEventListener('click', () => {
+    alert('Produto adicionado ao carrinho!');
+  });
+
+  // Handle wishlist button click
+  document.querySelector('.wishlist-button').addEventListener('click', function () {
+    if (this.classList.contains('added')) {
+      this.classList.remove('added');
+      this.style.color = 'black';
+      alert('Removido dos favoritos!');
+    } else {
+      this.classList.add('added');
+      this.style.color = 'red';
+      alert('Adicionado aos favoritos!');
+    }
+  });
+
 </script>
 
 </html>
