@@ -21,6 +21,7 @@ body {
   font-family: var(---wwwlaredoutept-poppins-semibold);
   /* Or overflow-y: scroll if needed */
 }
+
 .container {
   height: 100%;
   width: 100%;
@@ -280,7 +281,7 @@ body {
 
 
 
-/* PRODUCTWRAPPER */ 
+/* PRODUCTWRAPPER */
 .product-wrapper {
   align-self: stretch;
   display: flex;
@@ -322,7 +323,8 @@ body {
   gap: 10px;
   min-width: 320px;
   max-width: 320px;
-  transition: transform 0.2s ease; /* Smooth scaling on hover */
+  transition: transform 0.2s ease;
+  /* Smooth scaling on hover */
 }
 
 .product-card:hover {
@@ -536,7 +538,7 @@ body {
   text-align: left;
   font-size: 33px;
   color: #12151b;
-  font-family: Poppins;
+  font-family: var(--wwwlaredoutept-poppins-semibold);
 }
 
 .grid-helper {
@@ -548,6 +550,18 @@ body {
   justify-content: flex-start;
   gap: 16px;
 }
+
+.grid-helper2 {
+  width: 1376px;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+}
+
 .subtitle {
   align-self: self-start;
   display: flex;
@@ -572,6 +586,7 @@ body {
   text-align: center;
   /* Ensures it only takes the size of its content */
 }
+
 .image-icon {
   width: 100%;
   flex: 1;
@@ -582,6 +597,7 @@ body {
   object-fit: cover;
   min-height: 604px;
 }
+
 .ideas-container {
   width: 100%;
   border-radius: 8px;
@@ -609,6 +625,7 @@ body {
   max-width: 100%;
   max-height: 684px;
 }
+
 .image-icon1 {
   height: 100%;
   width: 100%;
@@ -624,6 +641,7 @@ body {
   max-height: 100%;
   object-fit: cover;
 }
+
 .image-icon1:hover {
   transform: scale(1.01);
 }
@@ -639,6 +657,7 @@ body {
   justify-content: flex-start;
   gap: 16px;
 }
+
 .more-articles-container {
   display: flex;
   /* Shrink-wrap the content based on children */
@@ -654,6 +673,7 @@ body {
   /* Remove any padding that might inflate the size */
   width: 100%;
 }
+
 .articles {
   border: 1px solid rgba(255, 255, 255, 0.1);
   /* Adds a subtle border */
@@ -666,12 +686,14 @@ body {
   justify-content: flex-start;
   min-height: 292px;
 }
+
 .picture {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
+
 .articles-text {
   min-height: 94px;
   flex-grow: 1;
@@ -681,17 +703,20 @@ body {
   justify-content: space-around;
   padding: 15px;
 }
+
 .articles-text-description {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
+
 .image {
   width: 44px;
   height: 44px;
   min-width: 44px;
 }
+
 .image-fill {
   width: 44px;
   height: 44px;
@@ -734,6 +759,7 @@ body {
   color: #12151b;
   font-family: Poppins;
 }
+
 .categories {
   width: 100%;
   display: flex;
@@ -742,6 +768,7 @@ body {
   justify-content: flex-start;
   gap: 16px;
 }
+
 .categories-container {
   overflow-x: scroll;
   display: flex;
@@ -753,6 +780,7 @@ body {
   max-width: 100%;
   margin-bottom: 10px;
 }
+
 .category-card {
   border: 1px solid rgba(104, 104, 104, 0.1);
   /* Adds a subtle border */
@@ -779,6 +807,7 @@ body {
   /* Adds a subtle shadow for the shading effect */
 
 }
+
 .category-text {
   border-radius: 8px 8px 0px 0px;
   border-bottom: 0.9px solid #f2f4f7;
@@ -800,10 +829,11 @@ body {
   align-self: stretch;
   display: flex;
   flex-direction: row;
-  align-items:center ;
+  align-items: center;
   justify-content: flex-start;
   font-size: 14px;
 }
+
 .component-3-icon6 {
   align-self: flex-end;
   flex-grow: 1;
@@ -814,6 +844,7 @@ body {
   width: 24px;
   height: 24px;
 }
+
 .component-3-icon5 {
   height: 32px;
   width: 32px;
@@ -979,22 +1010,26 @@ body {
   .banner-actions {
     display: none;
   }
+
   .grid {
     padding-bottom: 65px;
     box-sizing: border-box;
   }
+
   .grid-helper {
     padding-left: 20px;
     padding-right: 20px;
     box-sizing: border-box;
   }
+
   .subtitle-text {
     font-size: 20px;
     line-height: 29px;
   }
+
   .container {
     gap: 25px;
-}
+  }
 }
 
 @media screen and (max-width: 795px) {}
@@ -1056,15 +1091,18 @@ body {
   .footer-bottom-text {
     flex-wrap: wrap;
   }
+
   .grid-helper {
     padding-left: 87px;
     padding-right: 87px;
     box-sizing: border-box;
   }
+
   .subtitle-text {
     font-size: 26px;
     line-height: 38px;
   }
+
   .ideas-card {
     min-width: 100%;
   }
@@ -1083,16 +1121,20 @@ body {
 @media screen and (max-width: 1650px) {
   .container {
     height: auto;
-}
+  }
+
   .subtitle {
     max-width: 100%;
   }
+
   .image-icon {
     max-width: 100%;
   }
+
   .ideas-container {
     max-width: 100%;
   }
+
   .more-articles-container {
     flex-wrap: wrap;
   }
