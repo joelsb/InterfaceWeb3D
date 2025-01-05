@@ -52,10 +52,9 @@ body {
   justify-content: space-between;
   background-color: #fff;
   border-bottom: 1px solid #f2f4f7;
-  position: sticky;
   top: 0;
   z-index: 99;
-  padding: 10px 0;
+  padding: 10px 10px 10px 0px;
   font-family: Poppins, sans-serif;
 }
 
@@ -73,12 +72,13 @@ body {
 
 .banner-content {
   height: 104px;
+  width: 100%;
   /* Fill parent's height */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 20px;
+  padding: 0px 0px 0px 20px;
 }
 
 .banner-nav {
@@ -109,7 +109,7 @@ body {
 
 .menu-link {
   height: 24px;
-  padding: 10px 12px;
+  padding: 10px 20px;
   font-size: medium;
   text-decoration: none;
   font-weight: 900;
@@ -127,7 +127,7 @@ body {
 }
 
 .menu-link:hover {
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: #F2F4F7;
 }
 
@@ -171,7 +171,6 @@ body {
   border: none;
   outline: none;
   background: none;
-  flex-grow: 1;
   padding-left: 5px;
 }
 
@@ -252,7 +251,11 @@ body {
   flex-direction: row;
   align-items: center;
   flex-grow: 1;
-  gap: 7px
+  gap: 5px;
+}
+
+#first-lower-link {
+  margin-left: 5px;
 }
 
 .lower-list li a {
@@ -271,8 +274,8 @@ body {
 }
 
 .nav-wrapper-mobile {
+  width: 100%;
   display: none;
-  padding-right: 10px;
 }
 
 .image-icon:hover {
@@ -326,6 +329,7 @@ body {
   transition: transform 0.2s ease;
   /* Smooth scaling on hover */
 }
+
 
 .product-card:hover {
   border: 1px solid rgba(104, 104, 104, 0.1);
@@ -525,8 +529,8 @@ body {
   align-items: flex-end;
 }
 
-/* GRID Section */
-.grid {
+/* grid-rowSection */
+.grid-row{
   align-self: stretch;
   display: flex;
   flex-direction: row;
@@ -551,16 +555,7 @@ body {
   gap: 16px;
 }
 
-.grid-helper2 {
-  width: 1376px;
-  background-color: #fff;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 30px;
-  width: 100%;
-}
+
 
 .subtitle {
   align-self: self-start;
@@ -1011,8 +1006,8 @@ body {
     display: none;
   }
 
-  .grid {
-    padding-bottom: 65px;
+  .grid-row{
+    padding: 0px 0px 65px 0px;
     box-sizing: border-box;
   }
 
@@ -1067,7 +1062,6 @@ body {
   }
 
   .nav-wrapper-mobile {
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1141,5 +1135,15 @@ body {
 
 }
 
+@media screen and (max-width: 560px) {
+  #entrar-registar {
+    display: none;
+  }
+}
 
+@media screen and (max-width: 500px){
+  .banner-actions {
+    display: none;
+  }
+}
 /* ProductPage */

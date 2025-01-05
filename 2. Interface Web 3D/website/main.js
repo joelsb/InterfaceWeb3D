@@ -26,28 +26,13 @@ const sizes = {
     height: 600
 }
 
-
-
-// Select the anchor element with the ID "3D-Product"
-const productCard = document.getElementById("3D-Product");
-
-// Add a click event listener to the anchor element
-productCard.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the default anchor behavior
-    window.location.href = "./productPage.html"; // Redirect to the new page
-});
-productCard.addEventListener("mouseover", function (event) {
-    productCard.style.cursor = "pointer";
-});
-
-
-
 //Create a clock for the animation
-/*
+
 
 //render in the id="meuCanvas" and set sizes
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('meuCanvas') });
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('myCanvas') });
 renderer.setClearColor(0xffffff);
+
 renderer.setSize(sizes.width, sizes.height);
 
 //Create a mixer
@@ -63,6 +48,9 @@ loader.load(
         gltf.animations.forEach((clip) => {
             let action = mixer.clipAction(clip)
             animations.push(action)
+            animations.forEach((action) => {
+                action.play()
+            })
         })
     }
 )
@@ -98,15 +86,16 @@ scene.add(LightHelper2)
 
 
 //Get button 
-/*  
+/*
 <button id="btn_play">Play</button>
 <button id="btn_pause">Pause</button>
 <button id="btn_stop">Stop</button> 
-
+*/
 
 //Is the animation playing?
 let isPlaying = false
 //Play button
+/*
 document.getElementById('btn_play').addEventListener('click', () => {
     animations.forEach((action) => {
         if (action.paused) {
@@ -132,7 +121,7 @@ document.getElementById('btn_stop').addEventListener('click', () => {
         action.stop(); // Stop the animation
     })
 })
-
+*/
 
 let delta = 0; // tempo desde a última frame
 let clock = new THREE.Clock()
@@ -152,4 +141,3 @@ function tick() {
     delta = delta % min_latence;
 }
 tick();
-*/
