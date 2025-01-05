@@ -486,7 +486,28 @@
     align-items: center;
     color: #fff;
     z-index: 2;
-    /* Ensure it's above other content */
+    border-radius: 8px;
+    /* Slightly smoother rounding */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
+      0 10px 25px rgba(0, 0, 0, 0.1);
+    /* Layered shadows for depth */
+    background: radial-gradient(circle, #ffffff, #f0f0f0);
+
+
+
+    opacity: 0;
+    /* Start fully transparent */
+    visibility: hidden;
+    /* Hide it visually */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    /* Smooth transition */
+  }
+
+  .buttons.show {
+    opacity: 1;
+    /* Fully visible */
+    visibility: visible;
+    /* Make it visible */
   }
 
   .add-to-kart-favorite-container {
@@ -499,8 +520,12 @@
     gap: 10px;
   }
 
-  .hidden {
+  .display-none {
     display: none !important;
+  }
+
+  .display-flex {
+    display: flex !important;
   }
 
   @media screen and (max-width: 900px) {
@@ -664,9 +689,7 @@
               </button>
               <div class="carousel-track-container">
                 <ul class="carousel-track current">
-                  <li class="carousel-slide">
-                    <canvas class="myCanvas" id="myCanvas"></canvas>
-                  </li>
+
                   <li class="carousel-slide" id="image1">
                     <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
                   </li>
@@ -676,7 +699,9 @@
                   <li class="carousel-slide">
                     <img src="./public/foto_modelo3D-4.png" alt="Product Image 3" />
                   </li>
-
+                  <li class="carousel-slide">
+                    <canvas class="myCanvas" id="myCanvas"></canvas>
+                  </li>
 
                 </ul>
               </div>
@@ -924,12 +949,16 @@
       });
 
       // Show/hide nav bar and buttons based on the active slide
-      if (index === 0) {
-        navBar.classList.add("hidden");
-        buttons.classList.remove("hidden");
+      // Get the total number of slides
+      const totalSlides = slides.length;
+
+
+      if (index === totalSlides - 1) {
+        navBar.classList.add("display-none");
+        buttons.classList.add("show"); // Add the show class to make buttons visible
       } else {
-        navBar.classList.remove("hidden");
-        buttons.classList.add("hidden");
+        navBar.classList.remove("display-none");
+        buttons.classList.remove("show"); // Remove the show class to hide buttons
       }
     };
 
