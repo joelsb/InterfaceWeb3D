@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 70px;
     padding: 20px 50px;
     font-family: var(--wwwlaredoutept-poppins-semibold);
   }
@@ -77,12 +77,28 @@
     /* Ensures the image is centered */
   }
 
+  .carousel-slide.current {
+    z-index: 1;
+  }
+
+  #myCanvas {
+    align-self: center;
+    /* Maintain the 600x800 aspect ratio */
+    width: 992 !important;
+    height: 744 !important;
+  }
+
+  .before-3d {
+    z-index: 2;
+  }
+
   .carousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     /* Ensures the image covers the container while maintaining proportions */
   }
+
 
 
   .carousel-control {
@@ -345,6 +361,7 @@
     align-items: center;
     text-align: center;
     font-size: 23px;
+    width: 35px;
   }
 
   .quantity-wrapper svg {
@@ -491,7 +508,7 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
       0 10px 25px rgba(0, 0, 0, 0.1);
     /* Layered shadows for depth */
-    background: radial-gradient(circle, #ffffff, #f0f0f0);
+    background: transparent;
 
 
 
@@ -499,7 +516,7 @@
     /* Start fully transparent */
     visibility: hidden;
     /* Hide it visually */
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.1s ease, visibility 0.1s ease;
     /* Smooth transition */
   }
 
@@ -527,6 +544,60 @@
   .display-flex {
     display: flex !important;
   }
+  .description-text-container p {
+    margin: 0;
+  }
+
+  .description-text-container {
+    flex-grow: 1;
+    /* margin 0 to all childs */
+    margin: 0;
+
+  }
+
+  .description-text-title {
+    margin: 0;
+  }
+
+  .description-text-all {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .bold {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .description-list {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .no-bold {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .image-for-description {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-for-description img {
+    /* Add your styles here */
+    width: 70%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .horizontal-divider-3 {
+    width: 100%;
+    height: 2px;
+    background-color: #f2f4f7;
+  }
+
 
   @media screen and (max-width: 900px) {
     .product-images {
@@ -535,6 +606,10 @@
 
     .wishlist-button {
       display: block;
+    }
+
+    .description-text-container {
+      max-width: 100%;
     }
   }
 
@@ -696,7 +771,7 @@
                   <li class="carousel-slide">
                     <img src="./public/foto_modelo3D-3.png" alt="Product Image 2" />
                   </li>
-                  <li class="carousel-slide">
+                  <li class="carousel-slide before-3d">
                     <img src="./public/foto_modelo3D-4.png" alt="Product Image 3" />
                   </li>
                   <li class="carousel-slide">
@@ -799,28 +874,46 @@
           </div>
         </section>
       </section>
-      <section class="similar-products">
-        <div class="similar-products-title">
-          <h2>Produtos Similares</h2>
-          <article class="product-card2">
-            <img src="" alt="">
-          </article>
-          <article class="product-card2">
+      <div class="horizontal-divider-3"></div>
+      <section class="grid-helper2">
+        <div class="description-text-container">
+          <h2 class="description-text-title">Descrição do artigo</h2>
+          <div class="description-text-all">
+            <p>Abajur de teto, em verga, Ø50 cm, Makita natural LA REDOUTE INTERIEURS</p>
+            <p>Ref <span class="bold">2445420 / GIR469</p>
+            <p>Confecionado em verga entrançada, o abajur de teto Makita difunde uma luz aconchegante.</p>
+            <p class="bold">Descrição:</p>
+            <ul class="description-list">
+              <li>Em verga entrançada</li>
+              <li>Estrutura em ferro revestido por uma tinta epóxi</li>
+              <li>Suporte para casquilho E27</li>
+              <li>Este artigo é vendido sem eletrificação, cabo elétrico Baulind à venda em laredoute.pt</li>
+              </li>
+            </ul>
+            <p class="bold">Qualidade</p>
+            <ul class="description-list">
+              <li>Fabrico artesanal</li>
+            </ul>
+            <p class="bold">Dimensões</p>
+            <ul class="description-list">
+              <li>Diâmetro: 50 cm</li>
+              <li>Altura: 50 cm</li>
+            </ul>
+            <p class="bold">Dimensões e peso da embalagem</p>
+            <p>1 embalagem</p>
+            <ul class="description-list">
+              <li>Comp. 52 x alt. 52 x prof. 52 cm</li>
+              <li>1,5 kg</li>
+            </ul>
 
-          </article>
-          <article class="product-card2">
+            <p class="bold">Cores <span class="no-bold">Natural</span></p>
+            <p class="bold">Tamanhos <span class="no-bold">TAMANHO ÚNICO</span></p>
+          </div>
 
-          </article>
-          <article class="product-card2">
-
-          </article>
-          <article class="product-card2">
-
-          </article>
         </div>
-      </section>
-      <section class="product-description">
-
+        <div class="image-for-description">
+          <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
+        </div>
       </section>
       <section class="product-reviews">
       </section>

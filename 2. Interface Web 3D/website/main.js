@@ -22,8 +22,8 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.set(6, 4, 7);
 // create a render and set the size
 const sizes = {
-    width: 800,
-    height: 600
+    width: 992,
+    height: 744
 }
 
 //Create a clock for the animation
