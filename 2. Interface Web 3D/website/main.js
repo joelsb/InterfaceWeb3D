@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+
 // Create the scene
 let cena = new THREE.Scene();
 
@@ -17,8 +20,21 @@ let renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
 //     width: 992,
 //     height: 744
 // };
+
+const pmremGenerator = new THREE.PMREMGenerator( renderer );
+
+const hdriLoader = new RGBELoader()
+hdriLoader.load( 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/wildflower_field_4k.hdr', function ( texture ) {
+  const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+  texture.dispose(); 
+  scene.environment = envMap
+} );
+
+
 let width = 800;
 let height = 600;
+
+// Get the parent container's height (assuming the parent is fully rendered)
 
 // Get the element with the ID 'image1'
 let elementOfCarousel = document.querySelector('#image1');
@@ -114,12 +130,10 @@ carregador.load('./3d_module/Candeeiro.glb', function (glb) {
     // Extract cameras from the GLB file
     if (glb.cameras && glb.cameras.length > 0) {
         cameras = glb.cameras;
-        console.log('Loaded cameras:', cameras.map(c => c.name));
-
         // Set the first camera as the active camera
         camera = cameras.filter(c => c.name === 'CameraRight')[0];
+
     }
-    console.log('cameras:', cameras);
     // Find the object with the name "Abajur"
     let objectPosition = null;
 
@@ -134,21 +148,19 @@ carregador.load('./3d_module/Candeeiro.glb', function (glb) {
     });
 
     if (cameras.length > 0) {
-        console.log('camera.name', camera.name);
-        camera.aspect = 800 / 600;
-        camera.fov = 30;
         // camera.far = ;
         // camera.near = ;
-        // camera.scale = ;
+        //camera.scale = 2;
+        // camera.zoom = 1;
+        // camera.fov = 60;
+        // camera.rotateX(0.5);
         //look at the object
-        console.log('object:', objectPosition);
-        camera.lookAt(objectPosition.x, objectPosition.y, objectPosition.z);
-        // camera.setRotationFromEuler(new THREE.Euler(1.2880810636898086,
-        //     0.8175779197648579, 0.20882544682511592, 'XYZ'));
-        // _x:1.2880810636898086
-        // _y:0.8175779197648579
-        // _z:0.20882544682511592
-        // camera.zoom = ;
+        //Use the object position to alter lookAt in all cameras
+        cameras.forEach(camera => {
+            camera.aspect = width / height;
+            camera.lookAt(objectPosition.x, objectPosition.y, objectPosition.z);
+            camera.updateProjectionMatrix();
+        });
         camera.updateProjectionMatrix();
     }
 
@@ -157,16 +169,15 @@ carregador.load('./3d_module/Candeeiro.glb', function (glb) {
     glb.scene.traverse(child => {
         if (child.isLight) {
             lights.push(child);
-            console.log('light:', child);
         }
     });
+
 
 
     lights.forEach(light => {
         light.intensity = 1;
     });
 
-    console.log('Lights:', lights.map(light => light.name || 'Unnamed Light'));
     console.log('GLB Loaded:', glb);
 });
 

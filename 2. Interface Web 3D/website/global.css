@@ -161,6 +161,11 @@ body {
   background-color: #f2f4f7;
 }
 
+.search-bar:hover {
+  background-color: #E4E7EC;
+
+}
+
 .search-bar-icon {
   padding-left: 7px;
   height: 24px;
