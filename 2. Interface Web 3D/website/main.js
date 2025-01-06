@@ -1,143 +1,305 @@
-/*
-Free-form shape animation: 
-    Consiste na interpolação de duas versões da mesma geometria de um objeto (por 
-exemplo, uma bandeira que voa sob o efeito de vento). A modificação da forma realiza-se através da alteração 
-da posição dos vértices da malha. 
-
-3D morphing: 
-    Interpolação de dois modelos diferentes. Animação de todos os pontos de um objeto até às 
-posições ocupadas pelos pontos do outro objeto (exemplo, um rosto a transformar-se num cisne). 
-
-*/
-
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// create a scene, that will hold all our elements such as objects, cameras and lights.
-const scene = new THREE.Scene();
-// create a camera, which defines where we're looking at
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-// tell the camera where to look
-camera.position.set(6, 4, 7);
-// create a render and set the size
-const sizes = {
-    width: 992,
-    height: 744
+// Create the scene
+let cena = new THREE.Scene();
+
+let misturador = new THREE.AnimationMixer(cena);
+let acaoLongArm = null;
+let acaoSupportJoint = null;
+let acaoShortArm = null;
+
+// Renderer
+let myCanvas = document.getElementById('myCanvas');
+let renderer = new THREE.WebGLRenderer({ canvas: myCanvas });
+// const sizes = {
+//     width: 992,
+//     height: 744
+// };
+let width = 800;
+let height = 600;
+
+// Get the element with the ID 'image1'
+let elementOfCarousel = document.querySelector('#image1');
+
+// Get the actual rendered width and height of the element
+function getActualRenderedWidthAndHeight(element) {
+    let boundingBox = element.getBoundingClientRect();
+    let height = boundingBox.height;
+    let width = ((800 / 600) * height);
+    //set to int both values
+    height = parseInt(height, 10);
+    width = parseInt(width, 10);
+    return {
+        width: width,
+        height: height
+    };
 }
 
-//Create a clock for the animation
+//set height and width of the renderer according to the actual rendered width and height of the element
+({ width, height } = getActualRenderedWidthAndHeight(elementOfCarousel));
+renderer.setSize(width, height);
+
+//Always update the size based on the current boundingBox
+window.addEventListener('resize', () => {
+    // Get the actual rendered width and height of the element
+    ({ width, height } = getActualRenderedWidthAndHeight(elementOfCarousel));
+
+    renderer.setSize(width, height);
+});
+
+// Set background to gray
+cena.background = new THREE.Color('white');
 
 
-//render in the id="meuCanvas" and set sizes
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('myCanvas') });
-renderer.setClearColor(0xffffff);
 
-renderer.setSize(sizes.width, sizes.height);
+// // Main camera (fallback if no cameras are loaded from GLB)
+// const camera2 = new THREE.PerspectiveCamera(
+//     60,  // fov
+//     2,   // aspect
+//     0.1, // near
+//     500, // far
+// );
+// camera2.position.set(68930.7, 7235.89, 13912.9);
+// camera2.rotation.set(63.219, 0., 42.0166);
+// camera2.scale.set(100, 100, 100);
+// cena.add(camera2);
 
-//Create a mixer
-let mixer = new THREE.AnimationMixer(scene);
+// const controls2 = new OrbitControls(camera2, renderer.domElement);
+// controls2.target.set(0, 5, 0);
+// controls2.update();
 
-//Add the blender file
-let loader = new GLTFLoader()
-let animations = []
-loader.load(
-    'flag.gltf',
-    function (gltf) {
-        scene.add(gltf.scene)
-        gltf.animations.forEach((clip) => {
-            let action = mixer.clipAction(clip)
-            animations.push(action)
-            animations.forEach((action) => {
-                action.play()
-            })
-        })
+
+let luzPonto = new THREE.AmbientLight('white', 0.5);
+luzPonto.position.set(0, 20, 0);
+cena.add(luzPonto);
+
+// Camera management
+let camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 500);
+let cameras = [];
+let lights = [];
+let activeCameraIndex = 0;
+
+// GLTF loader
+let carregador = new GLTFLoader();
+carregador.load('./3d_module/Candeeiro.glb', function (glb) {
+    // Add the scene from the GLB to your main scene
+    cena.add(glb.scene);
+
+    // Position the lamp in the center and higher
+    glb.scene.position.set(0, -1, -4);
+
+    // Extract animations
+    let clipe1 = THREE.AnimationClip.findByName(glb.animations, 'LongArmRotation');
+    acaoLongArm = misturador.clipAction(clipe1);
+    acaoLongArm.play();
+    acaoLongArm.paused = true;
+    acaoLongArm.time = clipe1.duration * 0.5; // Start at 50%
+
+    let clipe2 = THREE.AnimationClip.findByName(glb.animations, 'SupportJointRotation');
+    acaoSupportJoint = misturador.clipAction(clipe2);
+    acaoSupportJoint.play();
+    acaoSupportJoint.paused = true;
+    acaoSupportJoint.time = clipe2.duration * 0.5; // Start at 50%
+
+    let clipe3 = THREE.AnimationClip.findByName(glb.animations, 'ShortArmRotation');
+    acaoShortArm = misturador.clipAction(clipe3);
+    acaoShortArm.play();
+    acaoShortArm.paused = true;
+    acaoShortArm.time = clipe3.duration * 0.5; // Start at 50%
+
+    misturador.update(0); // Force update mixer to reflect initial state
+
+    // Extract cameras from the GLB file
+    if (glb.cameras && glb.cameras.length > 0) {
+        cameras = glb.cameras;
+        console.log('Loaded cameras:', cameras.map(c => c.name));
+
+        // Set the first camera as the active camera
+        camera = cameras.filter(c => c.name === 'CameraRight')[0];
     }
-)
+    console.log('cameras:', cameras);
+    // Find the object with the name "Abajur"
+    let objectPosition = null;
 
-//Add orbit controls
-const controls = new OrbitControls(camera, renderer.domElement);
-
-//Creat a point of light
-const light = new THREE.PointLight("white");
-light.position.set(5, 3, 0);
-light.intensity = 50;
-//Oriente the light to the center
-scene.add(light);
-
-//Creat a new point of light
-const light2 = new THREE.PointLight("white");
-light2.position.set(-5, 3, 0);
-light2.intensity = 50;
-//Oriente the light to the center
-scene.add(light2);
-
-//Visual Auxiliar
-const LightHelper1 = new THREE.PointLightHelper(light, 0.2)
-scene.add(LightHelper1)
-
-const LightHelper2 = new THREE.PointLightHelper(light2, 0.2)
-scene.add(LightHelper2)
-
-
-//Add shadows
-// light.castShadow = true;
-// renderer.shadowMap.enabled = true;
-
-
-//Get button 
-/*
-<button id="btn_play">Play</button>
-<button id="btn_pause">Pause</button>
-<button id="btn_stop">Stop</button> 
-*/
-
-//Is the animation playing?
-let isPlaying = false
-//Play button
-/*
-document.getElementById('btn_play').addEventListener('click', () => {
-    animations.forEach((action) => {
-        if (action.paused) {
-            action.paused = false
+    glb.scene.traverse(child => {
+        if (child.name === 'Cube') {
+            objectPosition = {
+                x: child.position.x,
+                y: child.position.y,
+                z: child.position.z
+            };
         }
-        action.play()
-    })
-})
+    });
 
-//Pause button
-document.getElementById('btn_pause').addEventListener('click', () => {
-    animations.forEach((action) => {
-        console.log(action.paused)
-        if (!action.paused) {
-            action.paused = true
+    if (cameras.length > 0) {
+        console.log('camera.name', camera.name);
+        camera.aspect = 800 / 600;
+        camera.fov = 30;
+        // camera.far = ;
+        // camera.near = ;
+        // camera.scale = ;
+        //look at the object
+        console.log('object:', objectPosition);
+        camera.lookAt(objectPosition.x, objectPosition.y, objectPosition.z);
+        // camera.setRotationFromEuler(new THREE.Euler(1.2880810636898086,
+        //     0.8175779197648579, 0.20882544682511592, 'XYZ'));
+        // _x:1.2880810636898086
+        // _y:0.8175779197648579
+        // _z:0.20882544682511592
+        // camera.zoom = ;
+        camera.updateProjectionMatrix();
+    }
+
+    // Extract lights from the scene
+    let lights = [];
+    glb.scene.traverse(child => {
+        if (child.isLight) {
+            lights.push(child);
+            console.log('light:', child);
         }
-    })
-})
+    });
 
-//Stop button
-document.getElementById('btn_stop').addEventListener('click', () => {
-    animations.forEach((action) => {
-        action.stop(); // Stop the animation
-    })
-})
-*/
 
-let delta = 0; // tempo desde a última frame
-let clock = new THREE.Clock()
-let min_latence = 1 / 60; // tempo mínimo entre cada frame
-// function for re-rendering/animating the scene
-function tick() {
-    requestAnimationFrame(tick);
+    lights.forEach(light => {
+        light.intensity = 1;
+    });
 
-    delta += clock.getDelta(); // acumula tempo que passou desde a ultima chamada de getDelta
-    // não exceder a taxa de atualizações definida
-    if (delta < min_latence) return;
+    console.log('Lights:', lights.map(light => light.name || 'Unnamed Light'));
+    console.log('GLB Loaded:', glb);
+});
 
-    mixer.update(Math.floor(delta / min_latence) * min_latence); // atualizar animações
-    renderer.render(scene, camera)
+//camera position of array [0]
+// camera.position.set(object.position.x, object.position.y, object.position.z + 5);
 
-    // atualizar delta com o excedente
-    delta = delta % min_latence;
+// Event listener to switch cameras
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'c' && cameras.length > 0) {
+        // Cycle through available cameras
+        activeCameraIndex = (activeCameraIndex + 1) % cameras.length;
+        camera = cameras[activeCameraIndex];
+        console.log(`Switched to camera: ${camera.name}`);
+    }
+});
+
+// Link sliders to animations
+let sliderLongArm = document.getElementById('slider_long_arm');
+let sliderSupportJoint = document.getElementById('slider_support_joint');
+let sliderShortArm = document.getElementById('slider_short_arm');
+
+// Define the effective frame range in seconds
+const fps = 24; // Assuming 24 FPS, adjust if needed
+const longArmStart = 40 / fps; // Start frame in seconds
+const longArmEnd = 135 / fps;  // End frame in seconds
+const longArmDuration = longArmEnd - longArmStart; // Effective duration
+
+// Update slider for Long Arm Rotation
+sliderLongArm.addEventListener('input', function () {
+    if (acaoLongArm) {
+        let normalizedValue = parseFloat(this.value); // Value between 0.25 and 0.75
+        // Remap normalized slider value to effective range
+        let mappedTime = longArmStart + (normalizedValue - 0.25) / 0.5 * longArmDuration;
+        acaoLongArm.time = mappedTime;
+        misturador.update(0); // Force update the animation mixer
+    }
+});
+
+// Slider for Support Joint Rotation
+sliderSupportJoint.addEventListener('input', function () {
+    if (acaoSupportJoint) {
+        let duration = acaoSupportJoint.getClip().duration;
+        acaoSupportJoint.time = parseFloat(this.value) * duration;
+        misturador.update(0);
+    }
+});
+
+// Slider for Short Arm Rotation
+sliderShortArm.addEventListener('input', function () {
+    if (acaoShortArm) {
+        let duration = acaoShortArm.getClip().duration;
+        acaoShortArm.time = parseFloat(this.value) * duration;
+        misturador.update(0);
+    }
+});
+
+// Reset All Button - Switching Material Here
+document.getElementById('btn_reset_all').addEventListener('click', function () {
+    // Reset animations
+    if (acaoLongArm) {
+        acaoLongArm.paused = true;
+        acaoLongArm.time = acaoLongArm.getClip().duration * 0.5; // Reset to middle
+        sliderLongArm.value = 0.5; // Reset slider to middle
+    }
+
+    if (acaoSupportJoint) {
+        acaoSupportJoint.paused = true;
+        acaoSupportJoint.time = acaoSupportJoint.getClip().duration * 0.5; // Reset to middle
+        sliderSupportJoint.value = 0.5; // Reset slider to middle
+    }
+
+    if (acaoShortArm) {
+        acaoShortArm.paused = true;
+        acaoShortArm.time = acaoShortArm.getClip().duration * 0.5; // Reset to middle
+        sliderShortArm.value = 0.5; // Reset slider to middle
+    }
+
+    // Switch material on reset
+    currentMaterial = (currentMaterial === materialWood) ? materialMetal : materialWood; // Toggle between materials
+
+    // Apply the new material to all meshes
+    cena.traverse((child) => {
+        if (child.isMesh) {
+            child.material = currentMaterial;
+        }
+    });
+
+    // Force update the animation mixer
+    misturador.update(0);
+});
+
+// Update slider positions dynamically during animation playback
+function updateSliders() {
+    if (acaoLongArm && !acaoLongArm.paused) {
+        let duration = acaoLongArm.getClip().duration;
+        sliderLongArm.value = acaoLongArm.time / duration; // Normalize time
+    }
+
+    if (acaoSupportJoint && !acaoSupportJoint.paused) {
+        let duration = acaoSupportJoint.getClip().duration;
+        sliderSupportJoint.value = acaoSupportJoint.time / duration; // Normalize time
+    }
+
+    if (acaoShortArm && !acaoShortArm.paused) {
+        let duration = acaoShortArm.getClip().duration;
+        sliderShortArm.value = acaoShortArm.time / duration; // Normalize time
+    }
 }
-tick();
+
+// Render and animate
+let delta = 0;
+let relogio = new THREE.Clock();
+let latencia_minima = 1 / 60;
+
+function animar() {
+    requestAnimationFrame(animar);
+
+    delta += relogio.getDelta();
+    if (delta < latencia_minima) {
+        return;
+    }
+    const excedente = delta % latencia_minima;
+    const latenciaDiscreta = delta - excedente;
+
+    // Update the mixer for animations
+    misturador.update(latenciaDiscreta);
+
+    // Update sliders dynamically
+    updateSliders();
+
+    // Render the scene
+    renderer.render(cena, camera);
+    delta = excedente;
+}
+
+animar(); // Start the animation loop

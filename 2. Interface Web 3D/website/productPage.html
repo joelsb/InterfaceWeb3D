@@ -505,8 +505,6 @@
     z-index: 2;
     border-radius: 8px;
     /* Slightly smoother rounding */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
-      0 10px 25px rgba(0, 0, 0, 0.1);
     /* Layered shadows for depth */
     background: transparent;
 
@@ -693,7 +691,7 @@
   <div class="container">
     <header class="banner">
       <a class="banner-logo" href="index.html">
-        <img loading="lazy" alt="La Redoute Logo" src="./public/banner/LaRedouteImage.svg" />
+        <img alt="La Redoute Logo" src="./public/banner/LaRedouteImage.svg" />
       </a>
       <div class="banner-content">
         <nav class="banner-nav">
@@ -713,7 +711,7 @@
           </div>
           <div class="banner-actions">
             <a class="action-link">
-              <img class="action-icon" loading="lazy" alt="User Icon" src="./public/banner/person.svg" />
+              <img class="action-icon" alt="User Icon" src="./public/banner/person.svg" />
               <span id="entrar-registar">Entrar / Registar</span>
             </a>
             <a class="action-link" id="favorite">
@@ -764,7 +762,9 @@
               </button>
               <div class="carousel-track-container">
                 <ul class="carousel-track current">
-
+                  <li class="carousel-slide">
+                    <canvas class="myCanvas" id="myCanvas"></canvas>
+                  </li>
                   <li class="carousel-slide" id="image1">
                     <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
                   </li>
@@ -773,9 +773,6 @@
                   </li>
                   <li class="carousel-slide before-3d">
                     <img src="./public/foto_modelo3D-4.png" alt="Product Image 3" />
-                  </li>
-                  <li class="carousel-slide">
-                    <canvas class="myCanvas" id="myCanvas"></canvas>
                   </li>
 
                 </ul>
@@ -796,7 +793,11 @@
 
             </div>
             <div class="buttons">
-              buttons
+              <input type="range" id="slider_long_arm" min="0.25" max="0.75" step="0.01" value="0.5">
+              <input type="range" id="slider_support_joint" min="0.25" max="0.75" step="0.01" value="0.5">
+              <input type="range" id="slider_short_arm" min="0.25" max="0.75" step="0.01" value="0.5">
+              &nbsp;
+              <button id="btn_reset_all">RESET ALL</button>
             </div>
           </div>
           <!-- Product Details Section -->
@@ -1046,7 +1047,7 @@
       const totalSlides = slides.length;
 
 
-      if (index === totalSlides - 1) {
+      if (index === 0) {
         navBar.classList.add("display-none");
         buttons.classList.add("show"); // Add the show class to make buttons visible
       } else {
