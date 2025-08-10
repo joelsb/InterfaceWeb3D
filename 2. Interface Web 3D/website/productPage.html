@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow Condensed:wght@600&display=swap" />
+</head>
+
+<style>
+  .main {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 20px 50px;
+    font-family: var(--wwwlaredoutept-poppins-semibold);
+  }
+
+  :root {
+    --wwwlaredoutept-poppins-semibold: Poppins;
+    --carousel-width: 900px;
+    --carousel-height: 900px;
+    --indicator-active: rgb(0, 0, 0);
+    --indicator-inactive: rgb(255, 255, 255);
+  }
+
+  .grid-helper2 {
+    width: 1376px;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .product-images {
+    position: relative;
+    max-width: 45%;
+
+    overflow: hidden;
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .carousel-track-container {
+    height: 100%;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .carousel-track {
+    aspect-ratio: 1 / 1;
+
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    /* Matches the defined height */
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Ensures the image is centered */
+  }
+
+  .carousel-slide.current {
+    z-index: 1;
+  }
+
+  #myCanvas {
+    align-self: center;
+    /* Maintain the 600x800 aspect ratio */
+    width: 992 !important;
+    height: 744 !important;
+  }
+
+  .before-3d {
+    z-index: 2;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the container while maintaining proportions */
+  }
+
+
+
+  .carousel-control {
+    width: 7%;
+    aspect-ratio: 1 / 1;
+    /* Ensures the element remains square */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 10%;
+    border: 1px solid;
+    padding: 0.1%;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    /* associate the height and widht to the father */
+  }
+
+  .carousel-control svg {
+    width: 100%;
+    /* Adjust as needed for your SVG size */
+    height: 100%;
+  }
+
+  .carousel-control svg path {
+    fill: black;
+    transition: color 0.3s ease, transform 0.2s ease;
+    /* Smooth transitions */
+  }
+
+  /* Hover effect */
+  .carousel-control:hover svg path {
+    fill: white;
+  }
+
+  .carousel-control:hover,
+  .carousel-control:focus {
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(255, 255, 255);
+    color: var(--control-color);
+  }
+
+  .carousel-control.prev {
+    left: 20px;
+  }
+
+  .carousel-control.next {
+    right: 20px;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 92%;
+    left: 5%;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    /* Increased margin for better spacing */
+    gap: 10px;
+    /* Even spacing between indicators */
+  }
+
+  .carousel-indicator {
+    background-color: var(--indicator-inactive);
+    border: 1px solid rgba(0, 0, 0, 1);
+    /* Add a border for a cleaner look */
+    width: 15px;
+    /* Slightly larger for better visibility */
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, border 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Adds a subtle shadow for depth */
+  }
+
+  .carousel-indicator:hover,
+  .carousel-indicator:focus {
+    background-color: var(--indicator-active);
+    transform: scale(1.2);
+    /* Slightly enlarges on hover for interaction feedback */
+    border: 2px solid var(--indicator-active);
+    /* Highlight border for active hover */
+  }
+
+  .carousel-indicator.current {
+    background-color: var(--indicator-active);
+    border: 2px solid var(--indicator-active);
+    /* Solid border for active indicator */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    /* More pronounced shadow for active state */
+  }
+
+  .product-details {
+    width: 100%;
+    font-size: 20px;
+    align-self: stretch;
+    flex: 1;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+  }
+
+  .product-name {
+    display: inline-block;
+    /* Ensures the width matches the content */
+    width: auto;
+    /* Dynamically adjusts width to text */
+    height: auto;
+    /* Dynamically adjusts height to text */
+    box-sizing: content-box;
+    /* Prevents padding/border from affecting the size */
+    font-size: 130%;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-rating {
+    color: #555;
+    margin: 0;
+  }
+
+  .product-rating-bold {
+    font-weight: 600;
+  }
+
+  .product-rating-container {
+    font-size: 90%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .product-reviews-link {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .product-reviews-link:hover {
+    text-decoration: underline;
+  }
+
+  .product-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .product-options-container {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #b3b3b3ee;
+    color: #b3b3b3ee;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+
+  .options-container {
+    font-size: 17px;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: end;
+  }
+
+  .options-container-upper {
+    padding: 5px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .options-container .label {
+    margin: 0px;
+  }
+
+  .color-image {
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 20%;
+    margin: 5px 10px 5px 5px;
+  }
+
+  .color-selector {
+    padding: 5px 5px;
+  }
+
+  .product-options select {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .product-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1.3%;
+  }
+
+  .product-actions-container {
+    min-height: 40px;
+    height: 100%;
+  }
+
+  .quantity-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #b3b3b3ee;
+    border-radius: 7px;
+  }
+
+  .quantity {
+    /* align text to center verticly*/
+    flex-grow: 1;
+    height: 70%;
+    text-align: center;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    border: 1px solid #b3b3b3ee;
+    margin: 1% 1%;
+    padding: 0px 15px;
+  }
+
+  .quantity span {
+    align-items: center;
+    text-align: center;
+    font-size: 23px;
+    width: 35px;
+  }
+
+  .quantity-wrapper svg {
+    width: 35px;
+    height: 35px;
+    padding: 3px;
+  }
+
+  .quantity-wrapper svg path {
+    fill: black;
+  }
+
+  .quantity-wrapper svg:hover {
+    transform: scale(1.2);
+  }
+
+  .add-to-cart {
+    flex-grow: 1;
+    height: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+  }
+
+  .add-to-cart:hover {
+    background-color: #333;
+  }
+
+  .wishlist-button {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .wishlist-button:hover {
+    color: red;
+  }
+
+  .wishlist-button svg {
+    padding-top: 3px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .wishlist-button svg path {
+    fill: black;
+    transition: fill 0.3s;
+  }
+
+  .wishlist-button:hover svg path {
+    fill: red;
+  }
+
+  .wishlist-button.added svg path {
+    fill: red;
+  }
+
+  .link-to-pages {
+    font-size: 80%;
+    text-decoration: none;
+    color: rgb(141, 141, 141);
+  }
+
+  .slash-for-links {
+    color: rgb(141, 141, 141);
+  }
+
+  .link-to-pages:hover {
+    text-decoration: underline;
+  }
+
+  .title-product {
+    /* always uppercase */
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 500;
+    font-size: 80%;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    /* Ensures the width matches the content */
+    width: auto;
+    /* Dynamically adjusts width to text */
+    height: auto;
+    /* Dynamically adjusts height to text */
+    box-sizing: content-box;
+  }
+
+  .container-product-title-name {
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .grid-column {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 100%;
+    text-align: left;
+    font-size: 33px;
+    color: #12151b;
+    font-family: var(--wwwlaredoutept-poppins-semibold);
+  }
+
+  .buttons {
+    position: absolute;
+    /* Position it inside the carousel container */
+    bottom: 5%;
+    /* Position it at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Center it horizontally */
+    height: 10%;
+    /* Adjust as needed */
+    width: 90%;
+    /* Adjust as needed */
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    z-index: 2;
+    border-radius: 8px;
+    /* Slightly smoother rounding */
+    /* Layered shadows for depth */
+    background: transparent;
+
+
+
+    opacity: 0;
+    /* Start fully transparent */
+    visibility: hidden;
+    /* Hide it visually */
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+    /* Smooth transition */
+  }
+
+  .animation-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .buttons-on-model {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+
+  .diferents-animations {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .selected-button {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .animation-container input[type=range] {
+    background-color: transparent;
+    height: 18px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  input[type=range] {
+    display: none;
+    height: 18px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .input-animation.active {
+    display: block;
+  }
+
+  .input-lighting.active {
+    display: block;
+  }
+
+  input[type=range]:focus {
+    outline: none;
+  }
+
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    /* Reduced height for a more subtle track */
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    /* Similar to the scrollbar's track background */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Soft border like scrollbar */
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    align-self: center;
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* Subtle border for the thumb */
+    height: 7px;
+    /* Slightly smaller height for a more minimal thumb */
+    width: 30px;
+    /* Smaller thumb width */
+    border-radius: 10px;
+    /* Round thumb like scrollbar */
+    background: rgb(255, 255, 255);
+    /* Thumb background similar to scrollbar thumb */
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+  input[type=range]::-webkit-slider-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    /* Slightly darker when hovered */
+  }
+
+  input[type=range]::-webkit-slider-thumb:active {
+    background: rgba(255, 255, 255, 0.3);
+    /* Darker when active */
+  }
+
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    /* Similar to the track size in WebKit */
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    /* Same background for Firefox */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  input[type=range]::-ms-fill-lower {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  input[type=range]::-ms-fill-upper {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  input[type=range]:focus::-ms-fill-lower {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  input[type=range]:focus::-ms-fill-upper {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+
+  .buttons.show {
+    opacity: 1;
+    /* Fully visible */
+    visibility: visible;
+    /* Make it visible */
+  }
+
+  .add-to-kart-favorite-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .display-none {
+    display: none !important;
+  }
+
+  .display-flex {
+    display: flex !important;
+  }
+
+  .description-text-container p {
+    margin: 0;
+  }
+
+  .description-text-container {
+    flex-grow: 1;
+    /* margin 0 to all childs */
+    margin: 0;
+
+  }
+
+  .description-text-title {
+    margin: 0;
+  }
+
+  .description-text-all {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .bold {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .description-list {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .no-bold {
+    /* Add your styles here */
+    margin: 0;
+  }
+
+  .image-for-description {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-for-description img {
+    /* Add your styles here */
+    width: 70%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .horizontal-divider-3 {
+    width: 100%;
+    height: 2px;
+    background-color: #f2f4f7;
+  }
+
+
+  @media screen and (max-width: 900px) {
+    .product-images {
+      max-width: 100%;
+    }
+
+    .wishlist-button {
+      display: block;
+    }
+
+    .description-text-container {
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .grid-helper2 {
+      box-sizing: border-box;
+    }
+
+    .main {
+      gap: 50px;
+      padding: 15px 15px;
+    }
+
+    .container-product-title-name {
+      font-size: 17px;
+    }
+
+    .options-container {
+      font-size: 13px;
+    }
+
+    .numbers {
+      font-size: 15px;
+    }
+
+    .quantity {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    .quantity-wrapper {
+      height: auto;
+      width: 100%;
+    }
+
+    .quantity span {
+      font-size: 19px;
+    }
+
+    .quantity-wrapper svg {
+      width: 25px;
+      height: 25px;
+      padding: 10px;
+    }
+
+    .product-actions {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .add-to-cart {
+      font-size: 15px;
+    }
+
+    .product-actions-container {
+      min-height: 50px;
+    }
+
+    .carousel-control {
+      width: 40px;
+    }
+
+    .carousel {
+      width: 100%;
+    }
+  }
+
+
+  /* @media screen and (max-width: 935px){
+    .wishlist-button {
+      display: none;
+    }
+  } */
+</style>
+
+<style>
+  /* TIAGO CSS */
+</style>
+
+<body>
+  <div class="container">
+    <header class="banner">
+      <a class="banner-logo" href="index.html">
+        <img alt="La Redoute Logo" src="./public/banner/LaRedouteImage.svg" />
+      </a>
+      <div class="banner-content">
+        <nav class="banner-nav">
+          <ul class="upper-menu">
+            <li class="upper-item">
+              <a class="menu-link1" href="">Casa</a>
+              <span class="horizontal-divider" id="casa"></span>
+            </li>
+            <li class="upper-item">
+              <a class="menu-link1" href="">Moda</a>
+              <span class="horizontal-divider" id="moda"></span>
+            </li>
+          </ul>
+          <div class="search-bar">
+            <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+            <input class="input-search-bar" placeholder="O que procura?" type="text" />
+          </div>
+          <div class="banner-actions">
+            <a class="action-link">
+              <img class="action-icon" alt="User Icon" src="./public/banner/person.svg" />
+              <span id="entrar-registar">Entrar / Registar</span>
+            </a>
+            <a class="action-link" id="favorite">
+              <img class="action-icon" alt="Favorites Icon" src="./public/banner/heart.svg" />
+            </a>
+            <a class="action-link">
+              <img class="action-icon" alt="Shopping Bag Icon" src="./public/banner/shoppingBag.svg" />
+            </a>
+          </div>
+        </nav>
+        <div class="lower-nav-wrapper">
+          <nav class="lower-menu">
+            <ul class="lower-list">
+              <button class="menu-button">
+                <img class="menu-icon" alt="Menu Icon" src="./public/banner/menu.svg" />
+                <b class="menu-button-text">Menu</b>
+              </button>
+              <li class="menu-link"><a href="#natal">Natal</a></li>
+              <li class="menu-link"><a href="#outlet">Outlet</a></li>
+              <li class="menu-link" id="top-vendas"><a href="#top-vendas">Top Vendas</a></li>
+              <li class="menu-link"><a href="#marcas">Marcas</a></li>
+              <div class="list-margin">
+                <li><a class="menu-link" href="#profissionais">Profissionais</a></li>
+              </div>
+            </ul>
+          </nav>
+        </div>
+        <div class="nav-wrapper-mobile">
+          <div class="search-bar">
+            <img class="search-bar-icon" alt="Search Icon" src="./public/banner/search.svg" />
+            <input class="input-search-bar" placeholder="O que procura?" type="text" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="main">
+      <section class="grid-column">
+        <section class="grid-helper2">
+          <!-- ONLY WRITE IN THIS DIV - TIAGO - Product Images (Your existing carousel code) -->
+          <div class="product-images">
+            <div class="carousel">
+              <button class="carousel-control prev" aria-label="Previous slide">
+                <svg width="30" height="30" viewBox="0 0 41 41" fill="" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M31.8838 21.0284H13.3073L19.0973 26.8184L19.804 27.5251L18.3905 28.9387L17.6838 28.232L10.1875 20.7357C9.79724 20.3453 9.79724 19.7125 10.1875 19.3221L17.6838 11.8259L18.3905 11.1191L19.804 12.5326L19.0973 13.2395L13.3073 19.0294H31.8838V21.0284Z" />
+                </svg>
+
+              </button>
+              <div class="carousel-track-container">
+                <ul class="carousel-track current">
+                  <li class="carousel-slide">
+                    <canvas class="myCanvas" id="myCanvas"></canvas>
+                  </li>
+                  <li class="carousel-slide" id="image1">
+                    <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
+                  </li>
+                  <li class="carousel-slide">
+                    <img src="./public/foto_modelo3D-3.png" alt="Product Image 2" />
+                  </li>
+                  <li class="carousel-slide before-3d">
+                    <img src="./public/foto_modelo3D-4.png" alt="Product Image 3" />
+                  </li>
+
+                </ul>
+              </div>
+              <div class="carousel-nav" role="tablist">
+                <button class="carousel-indicator current" role="tab" aria-label="Slide 1"></button>
+                <button class="carousel-indicator" role="tab" aria-label="Slide 2"></button>
+                <button class="carousel-indicator" role="tab" aria-label="Slide 3"></button>
+                <button class="carousel-indicator" role="tab" aria-label="Slide 4"></button>
+              </div>
+              <button class="carousel-control next" aria-label="Next slide">
+                <svg width="30" height="30" viewBox="0 0 41 41" fill="" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M9.38477 19.0298H27.9613L22.1713 13.2398L21.4645 12.5331L22.878 11.1195L23.5848 11.8263L31.081 19.3225C31.4713 19.7129 31.4713 20.3457 31.081 20.7361L23.5848 28.2323L22.878 28.9391L21.4645 27.5256L22.1713 26.8188L27.9613 21.0288H9.38477V19.0298Z"
+                    fill="#12151B" />
+                </svg>
+              </button>
+
+            </div>
+            <div class="buttons">
+              <div class="animation-container" id="animations">
+                <div class="diferents-animations" >
+                  <button class="buttons-on-model">L</button>
+                  <button class="buttons-on-model">S</button>
+                  <button class="buttons-on-model">J</button>
+                </div>
+                <input class="input-animation" type="range" id="slider_long_arm" min="0.25" max="0.75" step="0.01"
+                  value="0.5">
+                <input class="input-animation" type="range" id="slider_short_arm" min="0.25" max="0.75" step="0.01"
+                  value="0.5">
+                <input class="input-animation" type="range" id="slider_support_joint" min="0.25" max="0.75" step="0.01"
+                  value="0.5">
+              </div>
+              <button class="buttons-on-model" id="btn_reset_all">RESET ALL</button>
+              <div class="animation-container" id="lighting">
+                <div class="diferents-animations">
+                  <button class="buttons-on-model">Light 1</button>
+                  <button class="buttons-on-model">Light 2</button>
+                </div>
+                
+                <input class="input-lighting" type="range" id="light1" min="5" max="50" step="1" value="5">
+                <input class="input-lighting" type="range" id="light2" min="5" max="50" step="1" value="5">
+              </div>
+            </div>
+          </div>
+          <!-- Product Details Section -->
+          <div class="product-details">
+            <div>
+              <a href="index.html" class="link-to-pages">La Redoute</a>
+              <span class="slash-for-links">&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;<span>
+                  <a href="index.html" class="link-to-pages">Iluminação</a>
+            </div>
+            <div class="container-product-title-name">
+              <h3 class="title-product">HOME INTERIEURS</h3>
+              <h1 class="product-name">Lâmpada de parede c/3D</h1>
+              <div class="product-rating-container">
+                <span class="product-rating-bold">4.5 </span>
+                <span class="product-rating">/5&nbsp;&nbsp;</span>
+                <a class="product-reviews-link" href="#reviews"> 14 avaliações</a>
+              </div>
+            </div>
+
+            <div class="product-options">
+              <div class="product-options-container">
+                <div class="options-container">
+                  <div class="color-image"></div>
+                  <label>Natural</label>
+                </div>
+
+                <div class="options-container">
+                  <label>COR ÚNICA</label>
+                </div>
+              </div>
+              <div class="product-options-container">
+                <div class="options-container">
+                  <label>Tamanho</label>
+                </div>
+                <div class="options-container">
+                  <label>TAMANHO ÚNICO</label>
+                </div>
+              </div>
+            </div>
+            <div class="numbers">
+              <div class="product-card-price-container">
+                <span class="discount">-35%</span>
+                <span class="price-without-discount">160.00 €</span>
+
+              </div>
+              <div class="price-final">104.00 €</div>
+            </div>
+
+            <div class="product-actions">
+              <div class="quantity-wrapper product-actions-container">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 13V11H19V13H5Z" fill="black" />
+                </svg>
+                <div class="quantity">
+                  <span>1</span>
+                </div>
+
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" fill="black" />
+                </svg>
+              </div>
+              <div class="add-to-kart-favorite-container product-actions-container">
+                <button class="add-to-cart">juntar ao carrinho</button>
+                <button class="wishlist-button">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M9.98723 7.0128C7.64796 7.0128 5.48863 8.9502 5.48863 12.5111C5.48863 13.6717 5.93749 14.9933 6.73624 16.4029C7.529 17.8024 8.62365 19.214 9.81428 20.5366C12.1705 23.1538 14.8177 25.3281 15.9854 26.2458C17.153 25.3281 19.8002 23.1538 22.1564 20.5366C23.3461 19.214 24.4417 17.8024 25.2355 16.4029C26.0332 14.9933 26.4821 13.6717 26.4821 12.5111C26.4821 8.9502 24.3227 7.0128 21.9835 7.0128C20.313 7.0128 19.1704 7.73258 18.3546 8.49334C17.9537 8.86722 17.6408 9.24311 17.3699 9.568L17.3399 9.60499C17.211 9.75894 17.063 9.93589 16.9261 10.0718C16.8378 10.1614 16.7406 10.2418 16.6361 10.3118C16.5272 10.3817 16.2963 10.5117 15.9854 10.5117C15.6734 10.5117 15.4435 10.3817 15.3356 10.3118C15.2311 10.2418 15.1339 10.1614 15.0456 10.0718C14.9008 9.92251 14.7627 9.76674 14.6318 9.60499L14.6018 9.568C14.3299 9.24311 14.017 8.86822 13.6161 8.49334C12.8003 7.73258 11.6577 7.0128 9.98723 7.0128ZM3.48926 12.5111C3.48926 8.07447 6.32837 5.01343 9.98723 5.01343C12.3155 5.01343 13.922 6.04311 14.9807 7.0318C15.3945 7.41768 15.7304 7.80356 15.9854 8.10746C16.2403 7.80356 16.5762 7.41768 16.99 7.0318C18.0487 6.04311 19.6552 5.01343 21.9835 5.01343C25.6423 5.01343 28.4814 8.07447 28.4814 12.5111C28.4814 14.1576 27.8576 15.83 26.9739 17.3886C26.0842 18.9581 24.8886 20.4896 23.642 21.8742C21.1487 24.6433 18.3686 26.9186 17.182 27.8483C16.8413 28.1177 16.4197 28.2642 15.9854 28.2642C15.551 28.2642 15.1294 28.1177 14.7887 27.8483C13.6021 26.9186 10.822 24.6433 8.32874 21.8742C7.08213 20.4896 5.88551 18.9581 4.99679 17.3886C4.11306 15.829 3.48926 14.1576 3.48926 12.5111Z"
+                      fill="#13151B" />
+                  </svg>
+
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </section>
+      <div class="horizontal-divider-3"></div>
+      <section class="grid-helper2">
+        <div class="description-text-container">
+          <h2 class="description-text-title">Descrição do artigo</h2>
+          <div class="description-text-all">
+            <p>Abajur de teto, em verga, Ø50 cm, Makita natural LA REDOUTE INTERIEURS</p>
+            <p>Ref <span class="bold">2445420 / GIR469</p>
+            <p>Confecionado em verga entrançada, o abajur de teto Makita difunde uma luz aconchegante.</p>
+            <p class="bold">Descrição:</p>
+            <ul class="description-list">
+              <li>Em verga entrançada</li>
+              <li>Estrutura em ferro revestido por uma tinta epóxi</li>
+              <li>Suporte para casquilho E27</li>
+              <li>Este artigo é vendido sem eletrificação, cabo elétrico Baulind à venda em laredoute.pt</li>
+              </li>
+            </ul>
+            <p class="bold">Qualidade</p>
+            <ul class="description-list">
+              <li>Fabrico artesanal</li>
+            </ul>
+            <p class="bold">Dimensões</p>
+            <ul class="description-list">
+              <li>Diâmetro: 50 cm</li>
+              <li>Altura: 50 cm</li>
+            </ul>
+            <p class="bold">Dimensões e peso da embalagem</p>
+            <p>1 embalagem</p>
+            <ul class="description-list">
+              <li>Comp. 52 x alt. 52 x prof. 52 cm</li>
+              <li>1,5 kg</li>
+            </ul>
+
+            <p class="bold">Cores <span class="no-bold">Natural</span></p>
+            <p class="bold">Tamanhos <span class="no-bold">TAMANHO ÚNICO</span></p>
+          </div>
+
+        </div>
+        <div class="image-for-description">
+          <img src="./public/foto_modelo3D-2.png" alt="Product Image 1" />
+        </div>
+      </section>
+      <section class="product-reviews">
+      </section>
+    </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3 class="footer-section-title">LA REDOUTE</h3>
+          <ul class="footer-link-list">
+            <li><a href="#" class="footer-link">Quem somos</a></li>
+            <li><a href="#" class="footer-link">Contactos</a></li>
+            <li>
+              <a href="#" class="footer-link">Sustentabilidade e responsabilidade social</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">SERVIÇOS</h3>
+          <ul class="footer-link-list">
+            <li><a href="#" class="footer-link">Ajuda</a></li>
+            <li><a href="#" class="footer-link">Trocas & Devoluções</a></li>
+            <li>
+              <a href="#" class="footer-link">Remover inscrição de Newsletter</a>
+            </li>
+            <li><a href="#" class="footer-link">Recolha e montagem</a></li>
+            <li><a href="#" class="footer-link">Todos os serviços</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">MARCAS EXCLUSIVAS</h3>
+          <ul class="footer-link-list">
+            <li>
+              <a href="#" class="footer-link">La Redoute Collections</a>
+            </li>
+            <li><a href="#" class="footer-link">La Redoute Intérieurs</a></li>
+            <li><a href="#" class="footer-link">AM.PM.</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-section-title">UNIVERSO LA REDOUTE</h3>
+          <ul class="footer-link-list">
+            <li><a href="#" class="footer-link">Inspiração</a></li>
+            <li><a href="#" class="footer-link">Vídeos</a></li>
+            <li><a href="#" class="footer-link">Profissionais</a></li>
+            <li><a href="#" class="footer-link">APP La Redoute</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-divider-wrapper">
+          <div class="footer-divider"></div>
+        </div>
+        <div class="footer-bottom-text">
+          <ul class="footer-bottom-list">
+            <li>
+              <a href="#" class="footer-link">Condições gerais de venda</a>
+            </li>
+            <span>•</span>
+            <li>
+              <a href="#" class="footer-link">Condições das ofertas em vigor</a>
+            </li>
+            <span>•</span>
+            <li>
+              <a href="#" class="footer-link">Política de privacidade e cookies</a>
+            </li>
+            <span>•</span>
+            <li>
+              <a href="#" class="footer-link">Livro de reclamações eletrónico</a>
+            </li>
+            <span>•</span>
+            <li>
+              <a href="#" class="footer-link">Recrutamento La Redoute</a>
+            </li>
+          </ul>
+          <div class="footer-dropdown">
+            <div class="footer-dropdown-icon">
+              <img src="./public/footer/globeNetwork.svg" alt="" />
+            </div>
+            <span class="footer-dropdown-item">Portugal</span>
+            <div class="footer-dropdown-icon">
+              <img src="./public/footer/downPointingArrowWhite.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script async src="/node_modules/es-module-shims.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "three": "/node_modules/three/build/three.module.js",
+        "three/addons/": "/node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+<script type="module" defer src="./main.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Carousel functionality
+    const track = document.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector(".carousel-control.next");
+    const prevButton = document.querySelector(".carousel-control.prev");
+    const indicators = Array.from(document.querySelectorAll(".carousel-indicator"));
+    const navBar = document.querySelector(".carousel-nav");
+    const buttons = document.querySelector(".buttons");
+
+    let currentIndex = 0;
+
+    // Function to update carousel visuals
+    const updateCarousel = (index) => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle("current", i === index);
+        dot.setAttribute("aria-selected", i === index);
+      });
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("current", i === index);
+      });
+
+      const totalSlides = slides.length;
+
+      if (index === 0) {
+        navBar.classList.add("display-none");
+        buttons.classList.add("show");
+      } else {
+        navBar.classList.remove("display-none");
+        buttons.classList.remove("show");
+      }
+    };
+
+    const moveToNextSlide = () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel(currentIndex);
+    };
+
+    const moveToPrevSlide = () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel(currentIndex);
+    };
+
+    nextButton.addEventListener("click", moveToNextSlide);
+    prevButton.addEventListener("click", moveToPrevSlide);
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        currentIndex = index;
+        updateCarousel(currentIndex);
+      });
+    });
+
+    updateCarousel(currentIndex);
+
+    // Quantity and wishlist functionality
+    const quantityDisplay = document.querySelector('.quantity span');
+    const minusButton = document.querySelector('.quantity-wrapper svg:first-of-type');
+    const plusButton = document.querySelector('.quantity-wrapper svg:last-of-type');
+    const wishlistButton = document.querySelector('.wishlist-button');
+    const addToCartButton = document.querySelector('.add-to-cart');
+
+    let quantity = parseInt(quantityDisplay.textContent, 10);
+
+    minusButton.addEventListener('click', () => {
+      if (quantity > 1) {
+        quantity--;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+
+    plusButton.addEventListener('click', () => {
+      quantity++;
+      quantityDisplay.textContent = quantity;
+    });
+
+    addToCartButton.addEventListener('click', () => {
+      alert('Produto adicionado ao carrinho!');
+    });
+
+    wishlistButton.addEventListener('click', function () {
+      if (this.classList.contains('added')) {
+        this.classList.remove('added');
+        this.style.color = 'black';
+        alert('Removido dos favoritos!');
+      } else {
+        this.classList.add('added');
+        this.style.color = 'red';
+        alert('Adicionado aos favoritos!');
+      }
+    });
+
+    
+  });
+</script>
+
+</html>
